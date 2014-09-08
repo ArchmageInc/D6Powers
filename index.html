@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-framework="angularjs">
+    <head>
+        <title>D6 Powers Character Generator</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" type="text/css" href="/modules/d6powers/assets/css/screen.css" />
+        <link rel="stylesheet" type="text/css" href="/modules/d6powers/assets/css/print.css" />
+    </head>
+    <body ng-app="D6Powers" ng-controller="AppCtlr">
+        
+        <header ng-include=" '/modules/d6powers/views/header.html' " class="no-print"></header>
+        
+        <ng-view  class="content"></ng-view>
+        
+        <!-- bower:js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+        <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
+        <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <!-- endbower -->
+        
+        <!--Firebase Auth-->
+        <script src="modules/FirebaseAuth/FirebaseAuth.js"></script>
+        
+        <!--D6 Powers-->
+        <script src="modules/d6powers/D6Powers.js"></script>
+        
+        <!--Directives-->
+        <script src="modules/d6powers/directives/d6Attribute.js"></script>
+        <script src="modules/d6powers/directives/d6Skill.js"></script>
+        
+        <!--Providers/Services--->
+        <script src="modules/d6powers/providers/FirebaseSock.js"></script>
+        <script src="modules/d6powers/providers/D6Skills.js"></script>
+        <script src="modules/d6powers/providers/D6Attributes.js"></script>
+        <script src="modules/d6powers/providers/D6Character.js"></script>
+        
+        <!--Controllers-->
+        <script src="modules/d6powers/controllers/AppCtlr.js"></script>
+        <script src="modules/d6powers/controllers/CharacterCtlr.js"></script>
+        
+    </body>
+</html>

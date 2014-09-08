@@ -1,0 +1,11 @@
+@media print{
+    @page{
+        size: portrait;
+    }
+    .no-print, .no-print *,[data-description]:hover:after{
+        display: none !important;
+    }
+    *:hover{
+        color: inherit !important;
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "Reflexes": {
+    "name": "Reflexes",
+    "description": "Measure of balance, limberness, quickness, and full-body motor abilities."
+  },
+  "Presence": {
+    "name": "Presence",
+    "description": "Measure of emotional strength, physical attractiveness, and personality."
+  },
+  "Knowledge": {
+    "name": "Knowledge",
+    "description": "Measure of strength of memory and ability to learn."
+  },
+  "Perception": {
+    "name": "Perception",
+    "description": " Measure of mental quickness and attention to detail."
+  },
+  "Physique": {
+    "name": "Physique",
+    "description": "Measure of physical power and ability to resist damage."
+  },
+  "Coordination": {
+    "name": "Coordination",
+    "description": "Measure of hand-eye coordination and fine motor abilities."
+  }
+}
