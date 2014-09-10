@@ -1,7 +1,4 @@
 @import url("icomoon.css") screen, print;
-@import url("exo.css") screen, print;
-@import url("bangers.css") screen, print;
-@import url("macondo.css") screen, print;
 @import url("greek.css") screen, print;
 *{
     box-sizing: border-box;
@@ -13,7 +10,7 @@ body{
     color: #3a3c36;
     font-size: 12px;
     margin: 0px;
-    font-family: 'Exo2', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     min-height: 100%;
 }
 h1,.h1{
@@ -138,7 +135,7 @@ nav a:after{
     color: #333333;
 }
 
-.character{
+.character-sheet{
     width: 768px;
     padding: 0.5em;
     border: 1px solid #3a3c36;
@@ -147,7 +144,7 @@ nav a:after{
     height: 100%;
 }
 
-.character-info{
+.character-sheet .character-info{
     width: 60%;
     display: inline-block;
     white-space: nowrap;
@@ -228,11 +225,11 @@ nav a:after{
     border: 1px solid #f2f2f2;
     
     background: #65a9d7;
-    background: -webkit-gradient(linear, left top, left bottom, from(#fd8507), to(#ef5132));
-    background: -webkit-linear-gradient(top, #fd8507, #ef5132);
-    background: -moz-linear-gradient(top, #fd8507, #ef5132);
-    background: -ms-linear-gradient(top, #fd8507, #ef5132);
-    background: -o-linear-gradient(top, #fd8507, #ef5132);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fdaa53), to(#ef7962));
+    background: -webkit-linear-gradient(top, #fdaa53, #ef7962);
+    background: -moz-linear-gradient(top, #fdaa53, #ef7962);
+    background: -ms-linear-gradient(top, #fdaa53, #ef7962);
+    background: -o-linear-gradient(top, #fdaa53, #ef7962);
     
     -webkit-box-shadow: #3a3c36 4px 6px 10px 2px;
     -moz-box-shadow: #3a3c36 4px 6px 10px 2px;
@@ -241,7 +238,7 @@ nav a:after{
     white-space: normal;
     color: #3a3c36;
     font-size: 12px;
-    font-family: 'Exo2';
+    font-family: 'Exo 2', sans-serif;
     font-weight: normal;
     
     width: intrinsic;           /* Safari/WebKit uses a non-standard name */
