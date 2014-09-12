@@ -3,9 +3,10 @@
 (function(ng){
     ng.module('D6Character').factory('D6Character',[
       '$firebaseAuth',
+      'D6Utils',
       'D6Sock',
       'D6AttributeList',
-      function ($auth,Sock,AttributeList){
+      function ($auth,$d6,Sock,AttributeList){
         'use strict';
         var defaultCharacter  = function(){
           return {
@@ -58,11 +59,11 @@
         }
         
         D6Character.prototype = {
-          $sock: new Sock('characters/'+$auth.user.uid+'/'),
           save: function(){
-            this.$sock.save();
+            return this.$sock.save(this);
           }
         };
+        $d6.addD6Property(D6Character.prototype,'$sock',new Sock('characters/'+$auth.user.uid+'/'));
         
         return D6Character;
       }

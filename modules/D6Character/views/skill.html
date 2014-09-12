@@ -1,6 +1,6 @@
 <div class="skill">
     <span class="skill-name">
-        <span data-description="{{ skill.description }}">
+        <span d6-description="skill.description">
             {{ skill.name }}
         </span>
     </span>
@@ -15,7 +15,7 @@
     <div class="specialization" ng-repeat="specialization in skill.specializations | orderOB:'name':false track by specialization.name">
         <span class="specialization-name">
             <span>•</span> 
-            <span data-description="{{ specialization.description }}">
+            <span d6-description="specialization.description">
                 {{ specialization.name }}
             </span>
         </span>

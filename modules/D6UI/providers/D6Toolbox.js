@@ -3,78 +3,43 @@
 (function(ng){
     'use strict';
     ng.module('D6UI').factory('D6Toolbox',[
-      function(){
+      'D6Tool',
+      function(Tool){
         
-        function Tool(properties){
-          this.callbacks  = [];
-          ng.extend(this,properties);
+        function D6Toolbox(){
+          this.tools  = [];
         }
-        Tool.prototype  = {
-          onUse: function(callback){
-            if(typeof callback==="function"){
-              this.callbacks.push(callback);
+        D6Toolbox.prototype = {
+          add:  function(tool,index){
+            if(ng.isArray(tool)){
+              for(var i=0;i<tool.length;i++){
+                this.add(tool[i],index);
+              }
+              return;
+            }
+            index = index || 0;
+            if(!(tool instanceof Tool)){
+              return;
+            }
+            if(this.tools.indexOf(tool)===-1){
+              this.tools.splice(index,0,tool);
             }
           },
-          offUse: function(callback){
-            var index = this.callbacks.indexOf(callback);
+          remove: function(tool){
+            if(ng.isArray(tool)){
+              for(var i=0;i<tool.length;i++){
+                this.remove(tool[i]);
+              }
+              return;
+            }
+            var index = this.tools.indexOf(tool);
             if(index!==-1){
-              this.callbacks.splice(index,1);
+              this.tools.splice(index,1);
             }
           }
         };
         
-        var tools = {
-          save: new Tool({
-            icon: 'disk',
-            name: 'save'
-          }),
-          edit: new Tool({
-            icon: 'pencil',
-            name: 'edit'
-          })
-        };
-        
-        var getToolsByName = function(name){
-          var foundTools  = [];
-          if(ng.isArray(name)){
-            for(var i=0;i<name.length;i++){
-              if(tools[name[i]]){
-                foundTools.push(tools[name[i]]);
-              }
-            }
-          }else{
-            if(tools[name]){
-              foundTools.push(tools[name]);
-            }
-          }
-          return foundTools;
-        };
-        
-        var Toolbox = {
-          tools:  [],
-          add:    function(toolName){
-            var tools  = getToolsByName(toolName);
-            
-            for(var i=0;i<tools.length;i++){
-              if(this.tools.indexOf(tools[i])===-1){
-                this.tools.push(tools[i]);
-              }
-            }
-            
-          },
-          remove: function(toolName){
-            var tools   =  getToolsByName(toolName);
-            
-            for(var i=0;i<tools.length;i++){
-              var index = this.tools.indexOf(tools[i]);
-              if(index!==-1){
-                this.tools.splice(index,1);
-              }
-            }
-          }
-        };
-        
-        return Toolbox;
+        return (new D6Toolbox());
         
       }]);
  })(angular);

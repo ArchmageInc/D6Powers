@@ -1,1 +1,1 @@
-<a href="" class="i-{{tool.icon}}" ng-repeat="tool in tools"></a>
+<button class="i-{{tool.icon}} tool" d6-description="tool.description" ng-repeat="tool in tools" ng-click="tool.use()" ng-show="tool.show()"></button>

@@ -5,7 +5,8 @@
   
   var app = ng.module('D6Data', [
     'firebase',
-    'FirebaseAuth'
+    'FirebaseAuth',
+    'D6Utils'
   ]);
   app.value('FirebaseUrl',FirebaseUrl);
   app.config([

@@ -12,12 +12,12 @@
           var $sock       = new Sock('attributes/'+attribute.name+'/skills');
           ng.extend(this,{
             name:     skillName,
-            attribue: attribute.name,
+            attribute: attribute.name,
             rank:     0,
             pips:     0
           });
-          $d6.addD6Property(skill,'max');
-          $sock.get(skillName).then(function($skill){
+          $d6.addD6Property(skill,'attribute');
+          $sock.get({name:skillName}).then(function($skill){
             $d6.addD6Property(skill,'description',$skill.description);
           });
         }

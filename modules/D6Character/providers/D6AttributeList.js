@@ -12,9 +12,7 @@
         
         var getAttributes = function(filter){
           var $sock = new Sock('attributes');
-          return $sock.getBy().then(function($attributes){
-            return $filter('filter')($attributes,filter);
-          });
+          return $sock.get(filter);
         };
         
         function AttributeList(attributes){

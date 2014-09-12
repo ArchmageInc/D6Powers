@@ -12,7 +12,7 @@
         
         var getSkills = function(filter){
           var $sock = new Sock('attributes');
-          return $sock.getBy().then(function($attributes){
+          return $sock.get().then(function($attributes){
             var skills = [];
             ng.forEach($attributes,function($attribute){
               ng.forEach($attribute.skills,function(skill){

@@ -19,7 +19,7 @@
             max:  5
           });
           $d6.addD6Property(attribute,'max');
-          $sock.get(attributeName).then(function($attribute){
+          $sock.get({name:attributeName}).then(function($attribute){
             $d6.addD6Property(attribute,'description',$attribute.description);
             SkillList.getSkills({attribute:attributeName}).then(function($skills){
               attribute.skills  = new SkillList(attribute,$skills);
