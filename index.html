@@ -7,12 +7,14 @@
         
         <link href='http://fonts.googleapis.com/css?family=Exo+2:400,700|Bangers|Macondo' rel='stylesheet' type='text/css'>
         
-        <link rel="stylesheet" type="text/css" href="/modules/d6powers/assets/css/screen.css" />
-        <link rel="stylesheet" type="text/css" href="/modules/d6powers/assets/css/print.css" />
-    </head>
-    <body ng-app="D6Powers" ng-controller="AppCtlr">
+        <link rel="stylesheet" type="text/css" href="/modules/D6Character/assets/css/screen.css" />
         
-        <header ng-include=" '/modules/d6powers/views/header.html' " class="no-print"></header>
+        <link rel="stylesheet" type="text/css" href="/modules/D6App/assets/css/screen.css" />
+        <link rel="stylesheet" type="text/css" href="/modules/D6App/assets/css/print.css" />
+    </head>
+    <body ng-app="D6App" ng-controller="AppCtlr">
+        
+        <header ng-include=" '/modules/D6App/views/header.html' " class="no-print"></header>
         
         <ng-view  class="content"></ng-view>
         
@@ -23,27 +25,44 @@
         <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
         <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
         <!-- endbower -->
         
         <!--Firebase Auth-->
         <script src="modules/FirebaseAuth/FirebaseAuth.js"></script>
         
-        <!--D6 Powers-->
-        <script src="modules/d6powers/D6Powers.js"></script>
+        <!--D6 App-->
+        <script src="modules/D6App/D6App.js"></script>
+        <script src="modules/D6App/controllers/AppCtlr.js"></script>
         
-        <!--Directives-->
-        <script src="modules/d6powers/directives/d6Attribute.js"></script>
-        <script src="modules/d6powers/directives/d6Skill.js"></script>
+        <!--D6 Data-->
+        <script src="modules/D6Data/D6Data.js"></script>
+        <script src="modules/D6Data/providers/D6Sock.js"></script>
         
-        <!--Providers/Services--->
-        <script src="modules/d6powers/providers/FirebaseSock.js"></script>
-        <script src="modules/d6powers/providers/D6Skills.js"></script>
-        <script src="modules/d6powers/providers/D6Attributes.js"></script>
-        <script src="modules/d6powers/providers/D6Character.js"></script>
+        <!--D6 Utils-->
+        <script src="modules/D6Utils/D6Utils.js"></script>
+        <script src="modules/D6Utils/filters/orderOB.js"></script>
+        <script src="modules/D6Utils/providers/D6Property.js"></script>
+        <script src="modules/D6Utils/providers/D6Utils.js"></script>
         
-        <!--Controllers-->
-        <script src="modules/d6powers/controllers/AppCtlr.js"></script>
-        <script src="modules/d6powers/controllers/CharacterCtlr.js"></script>
+        <!--D6 UI-->
+        <script src="modules/D6UI/D6UI.js"></script>
+        <script src="modules/D6UI/directives/d6Toolbox.js"></script>
+        <script src="modules/D6UI/providers/D6Tool.js"></script>
+        <script src="modules/D6UI/providers/D6Toolbox.js"></script>
+        <script src="modules/D6UI/controllers/ToolboxCtlr.js"></script>
+        
+        <!--D6 Character-->
+        <script src="modules/D6Character/D6Character.js"></script>
+        <script src="modules/D6Character/directives/d6Attribute.js"></script>
+        <script src="modules/D6Character/directives/d6Skill.js"></script>
+        <script src="modules/D6Character/providers/D6AttributeList.js"></script>
+        <script src="modules/D6Character/providers/D6SkillList.js"></script>
+        <script src="modules/D6Character/providers/D6Attribute.js"></script>
+        <script src="modules/D6Character/providers/D6Skill.js"></script>
+        <script src="modules/D6Character/providers/D6Character.js"></script>
+        <script src="modules/D6Character/controllers/CharacterCtlr.js"></script>
+        
         
     </body>
 </html>

@@ -14,5 +14,8 @@
   "dependencies": {
     "angularfire": "~0.8.2",
     "angular-route": "~1.2.23"
+  },
+  "devDependencies": {
+    "underscore": "~1.7.0"
   }
 }

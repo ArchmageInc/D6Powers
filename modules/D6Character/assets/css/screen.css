@@ -1,0 +1,103 @@
+.character-sheet{
+    width: 768px;
+    padding: 0.5em;
+    margin: 0 0.5em;
+    border-radius: 1em;
+    height: 100%;
+}
+
+.character-sheet .character-info{
+    width: 60%;
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: 0.25em;
+    overflow: hidden;
+}
+.character-info >div{
+    height: 1.5em;
+}
+.character-info >div >span{
+    display: inline-block;
+}
+.character-info >div >span:nth-child(odd){
+    font-weight: bold;
+    width: 100px;
+}
+.character-info >div >span:nth-child(even){
+    border-bottom: 1px solid #000;
+    width: 100%;
+    padding-bottom: 0.12em;
+}
+.character-info div.multi-line >span{
+    width: auto;
+    margin: 0 0.25em 0 0;
+}
+.character-info div.multi-line >span:nth-child(even){
+    min-width: 9%;
+    padding-left: 0.5em;
+}
+
+.character-stats{
+    width: 60%;
+    display: inline-block;
+}
+.character-stats >div{
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+}
+
+.attribute,.skill,.specialization{
+    cursor: default;
+}
+
+.attribute{
+    padding: 0 0.25em;
+}
+
+.attribute-name,.skill-name,.specialization-name{
+    display: inline-block;
+    text-align: left;
+    width: 73%;
+}
+.attribute .rank{
+    display: inline-block;
+    width: 23%;
+    font-family: 'Macondo', cursive;
+    font-weight: bold;
+    text-align: right;
+}
+.attribute .pips{
+    font-family: 'Greek', 'Macondo', cursive;
+    font-size: 1.25em;
+    letter-spacing: 0.12em;
+    font-weight: normal;
+}
+
+.skill-name span:hover{
+    color: #fd8507;
+}
+.skill, .specialization{
+    border-bottom: 1px solid #3a3c36;
+    height: 20px;
+    padding: 0.25em 0.25em 0.25em 0.5em;
+    white-space: nowrap;
+}
+
+.specialization{
+    padding-left: 1.5em;
+    padding-right: 0;
+}
+.specialization-name >span{
+    font-size: 2em;
+    line-height: 0.5em;
+    display: inline-block;
+    vertical-align: -0.12em;
+}
+
+
+.character-powers{
+    width: 39%;
+    display: inline-block;
+    vertical-align: top;
+}

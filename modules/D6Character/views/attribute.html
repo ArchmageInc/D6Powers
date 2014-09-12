@@ -1,0 +1,18 @@
+<div class="attribute">
+    <h2 class="attribute-title">
+        <span class="attribute-name">
+            <span data-description="{{ attribute.$attribute.description }}">
+                {{ attribute.$attribute.name }}
+            </span>
+        </span>
+        <span class="rank">
+            {{ attribute.rank }}D
+            <span class="pips" ng-show="attribute.pips">
+                +{{ attribute.pips }}
+            </span>
+        </span>
+    </h2>
+    <div class="attribute-skills">
+        <d6-skill d6-scope="skill"  ng-repeat="skill in attribute.skills | orderOB:'name':false track by skill.name"></d6-skill>
+    </div>
+</div>

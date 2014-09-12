@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             ],
             cwd: '',
             dependencies: true,
-            devDependencies: false,
+            devDependencies: true,
             exclude: [],
             fileTypes: {},
             ignorePath: '',
