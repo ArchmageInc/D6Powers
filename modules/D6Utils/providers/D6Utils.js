@@ -6,8 +6,26 @@
       function(D6Property){
         'use strict';
         
+        var roll  = function(number,explode,previous){
+          previous  = previous || 0;
+          var result  = Math.round(Math.random()*5)+1;
+          if(number>1){
+            number  =   number-1;
+            result  =  roll(number,explode,result+previous);
+            return result;
+          }
+          
+          if(result===6 && explode!==false){
+            var exp = roll(1);
+            result  +=  exp;
+          }
+          
+          return result+previous;
+        };
+        
         var D6Utils = {
-          addD6Property: D6Property
+          roll:           roll,
+          addD6Property:  D6Property
         };
         
         

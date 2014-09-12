@@ -22,7 +22,7 @@
             fatePoints:       0,
             kaPoints:         0,
             characterPoints:  0,
-            bodyPoints:       20+Math.round(Math.random()*5)+1,
+            bodyPoints:       20,
             physicalDamage:   1,
             movement:         10,
             funds:            0,
