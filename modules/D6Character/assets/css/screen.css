@@ -72,6 +72,7 @@ d6-attribute .rank{
     font-family: 'Greek', 'Macondo', cursive;
     font-size: 1.25em;
     font-weight: normal;
+    vertical-align: -0.05em;
 }
 .attribute d6-adjust{
     display: inline-block;

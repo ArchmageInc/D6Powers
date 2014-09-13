@@ -69,7 +69,7 @@
             function undo(){
               $scope.controls.revision--;
               
-              if($scope.controls.revision<0){
+              if($scope.character.revisions.length==0 || $scope.controls.revision<0){
                 $scope.controls.revision  = 0;
                 $scope.controls.changes   = false;
                 return false;
@@ -113,8 +113,10 @@
             
             function saveCharacter(){
               $scope.character.save().then(function(){
-                $scope.controls.changes = false;
-                $scope.controls.editing = false;
+                $scope.controls.changes   = false;
+                $scope.controls.editing   = false;
+                $scope.controls.revision  = 0;
+                $scope.character.revisions.splice(0,$scope.character.revisions.length);
               });
             }
             

@@ -34,6 +34,8 @@
     width: -moz-max-content;    /* Firefox/Gecko */
     width: -webkit-max-content; /* Chrome */
     max-width: 400px;
+    
+    z-index: 1000;
 }
 [data-description].d6-description-right:hover:after{
     left: 100%;

@@ -14,9 +14,10 @@
           
           ng.extend(this,{
             id:               null,
-            name:             "",
-            occupation:       "",
-            archetype:        "",
+            name:             "Random Name",
+            alias:            "Super Dude",
+            occupation:       "Worker",
+            archetype:        "Adventurer",
             species:          "Human",
             gender:           ["Male","Female"][Math.round(Math.random())],
             powerLevel:       2,
