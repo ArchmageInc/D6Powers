@@ -13,6 +13,7 @@
           name:         'Tool',
           description:  '',
           show:         function(){return true;},
+          disable:      function(){return false;},
           use:          function(){}
         };
         

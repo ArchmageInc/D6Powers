@@ -32,45 +32,6 @@ h1,h2,h3,.h1,.h2,.h3{
     font-weight: normal;
     display: block;
 }
-a{
-    text-decoration: none;
-    color: #3a3c36;
-}
-a:hover{
-    color: #fd8507;
-}
-button{
-   display: inline-block;
-   cursor: pointer;
-   border: 0;
-   border-top: 1px solid #ef5132;
-   background: #65a9d7;
-   background: -webkit-gradient(linear, left top, left bottom, from(#fd8507), to(#ef5132));
-   background: -webkit-linear-gradient(top, #fd8507, #ef5132);
-   background: -moz-linear-gradient(top, #fd8507, #ef5132);
-   background: -ms-linear-gradient(top, #fd8507, #ef5132);
-   background: -o-linear-gradient(top, #fd8507, #ef5132);
-   padding: 5px 10px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 1em;
-   outline: none;
-   text-decoration: none;
-   vertical-align: middle; 
-}
-button:hover{
-   border-top-color: #dec75f;
-}
-button:active{
-    border-top-color: #3a3c36;
-}
-
 
 header{
     margin: 0px 0px 1em 0px;

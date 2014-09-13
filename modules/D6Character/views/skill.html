@@ -1,7 +1,7 @@
 <div class="skill">
     <span class="skill-name">
         <span d6-description="skill.description">
-            {{ skill.name }}
+            {{ skill.name | replace:'_':' ' }}
         </span>
     </span>
     <span class="rank" ng-show="skill.rank>0 || skill.pips>0">
@@ -16,7 +16,7 @@
         <span class="specialization-name">
             <span>•</span> 
             <span d6-description="specialization.description">
-                {{ specialization.name }}
+                {{ specialization.name | replace:'_':' '  }}
             </span>
         </span>
         <span class="rank">

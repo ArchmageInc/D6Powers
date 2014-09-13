@@ -6,6 +6,7 @@
         'use strict';
         return {
           restrict:     'E',
+          controller:   'AttributeCtlr',
           templateUrl:  'modules/D6Character/views/attribute.html',
           scope:  {
             'attribute': '=d6Scope'

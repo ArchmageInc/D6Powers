@@ -1,15 +1,15 @@
 /*global angular */
 
 (function(ng){
-  ng.module('D6Character').directive('d6Skill',[
+  ng.module('D6UI').directive('d6Dialog',[
       function(){
         'use strict';
         return {
           restrict:     'E',
-          controller:   'SkillCtlr',
-          templateUrl:  'modules/D6Character/views/skill.html',
+          templateUrl:  'modules/D6UI/views/dialog.html',
+          transclude:   true,
           scope:  {
-            'skill': '=d6Scope'
+            'confirmation': '=d6Confirm'
           }
         };
       }

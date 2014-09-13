@@ -46,6 +46,75 @@ header d6-toolbox{
     margin-top: -0.5em;
 }
 
-d6-toolbox .tool{
-    
+a{
+    text-decoration: none;
+    color: #3a3c36;
+}
+a:hover{
+    color: #fd8507;
+}
+button{
+   display: inline-block;
+   cursor: pointer;
+   border: 0;
+   border-top: 1px solid #ef5132;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#fd8507), to(#ef5132));
+   background: -webkit-linear-gradient(top, #fd8507, #ef5132);
+   background: -moz-linear-gradient(top, #fd8507, #ef5132);
+   background: -ms-linear-gradient(top, #fd8507, #ef5132);
+   background: -o-linear-gradient(top, #fd8507, #ef5132);
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 1em;
+   outline: none;
+   text-decoration: none;
+   vertical-align: middle; 
+}
+button:hover{
+   border-top-color: #dec75f;
+}
+button:active{
+    border-top-color: #3a3c36;
+}
+button[disabled]{
+   border-top: 1px solid #3a3c36;
+   background: #f2f2f2;
+   background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#3a3c36));
+   background: -webkit-linear-gradient(top, #f2f2f2, #3a3c36);
+   background: -moz-linear-gradient(top, #f2f2f2, #3a3c36);
+   background: -ms-linear-gradient(top, #f2f2f2, #3a3c36);
+   background: -o-linear-gradient(top, #f2f2f2, #3a3c36);
+   cursor: default;
+}
+
+.modal{
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+}
+.dialog{
+    max-width: 50%;
+    min-width: 25%;
+    display: block;
+    position: fixed;
+    top: 25%;
+    left: 37%;
+    background: #fff;
+    border-radius: 1em;
+    padding: 1em;
+}
+.dialog *{
+    white-space: normal;
 }

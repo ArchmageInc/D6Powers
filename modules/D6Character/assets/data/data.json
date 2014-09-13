@@ -39,8 +39,8 @@
           "description": "Leaping over obstacles.",
           "attribute": "Reflexes"
         },
-        "Melee combat": {
-          "name": "Melee combat",
+        "Melee_combat": {
+          "name": "Melee_combat",
           "description": "Wielding hand-to-hand weapons.",
           "attribute": "Reflexes"
         },
@@ -60,8 +60,8 @@
       "name": "Presence",
       "description": "Measure of emotional strength, physical attractiveness, and personality.",
       "skills": {
-        "Animal handling": {
-          "name": "Animal handling",
+        "Animal_handling": {
+          "name": "Animal_handling",
           "description": "Controlling animals and making them perform tricks and follow commands.",
           "attribute": "Presence"
         },
@@ -244,8 +244,8 @@
       "name": "Coordination",
       "description": "Measure of hand-eye coordination and fine motor abilities.",
       "skills": {
-        "Lock picking": {
-          "name": "Lock picking",
+        "Lock_picking": {
+          "name": "Lock_picking",
           "description": "Opening a mechanical (not electronic) lock or safe without possessing the key or combination, as well as disarming small mechanical traps.",
           "attribute": "Coordination"
         },
@@ -254,8 +254,8 @@
           "description": "Shooting guns of any type. Covers everything from small slugthrowers to vehicle-mounted rockets.",
           "attribute": "Coordination"
         },
-        "Missile weapons": {
-          "name": "Missile weapons",
+        "Missile_weapons": {
+          "name": "Missile_weapons",
           "description": "Firing unpowered ranged weapons.",
           "attribute": "Coordination"
         },
@@ -264,8 +264,8 @@
           "description": "Operating any kind of vehicle or powered armor traveling on or through the ground, a liquid medium, the air, or space.",
           "attribute": "Coordination"
         },
-        "Sleight of hand": {
-          "name": "Sleight of hand",
+        "Sleight_of_hand": {
+          "name": "Sleight_of_hand",
           "description": "Nimbleness with the fingers and misdirection, including picking pockets, palming items, and stage magic.",
           "attribute": "Coordination"
         },
