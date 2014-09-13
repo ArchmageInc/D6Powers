@@ -41,7 +41,7 @@
     width: 60%;
     display: inline-block;
 }
-.character-stats >div{
+.character-stats d6-attribute{
     vertical-align: top;
     display: inline-block;
     width: 50%;
@@ -53,16 +53,17 @@
 
 .attribute{
     padding: 0 0.25em;
+    position: relative;
 }
 
 .attribute-name,.skill-name,.specialization-name{
     display: inline-block;
     text-align: left;
-    width: 73%;
+    width: 55%;
 }
-.attribute .rank{
+d6-attribute .rank{
     display: inline-block;
-    width: 23%;
+    width: 41%;
     font-family: 'Macondo', cursive;
     font-weight: bold;
     text-align: right;
@@ -70,18 +71,43 @@
 .attribute .pips{
     font-family: 'Greek', 'Macondo', cursive;
     font-size: 1.25em;
-    letter-spacing: 0.12em;
     font-weight: normal;
 }
-
+.attribute d6-adjust{
+    display: inline-block;
+    position: absolute;
+    top: 0%;
+    right: 34%;
+    font-size: 9px;
+}
+.attribute d6-adjust button{
+    padding: 0.25em;
+    display: block;
+    margin: 0.25em 0px;
+    border-radius: 0.5em;
+}
+.skill-name{
+    
+}
 .skill-name span:hover{
     color: #fd8507;
+}
+d6-skill .rank{
+    
+}
+.skill d6-adjust{
+    position: absolute;
+    right: 27%;
+}
+.skill d6-adjust button{
+  display: inline-block;  
 }
 .skill, .specialization{
     border-bottom: 1px solid #3a3c36;
     height: 20px;
     padding: 0.25em 0.25em 0.25em 0.5em;
     white-space: nowrap;
+    position: relative;
 }
 
 .specialization{

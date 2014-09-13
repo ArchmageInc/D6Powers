@@ -77,9 +77,7 @@
         </div>
     </div>
     <div class="character-stats">
-        <div ng-repeat="attribute in character.attributes | orderOB:'skills.length':true track by attribute.name">
-            <d6-attribute d6-scope="attribute"></d6-attribute>
-        </div>
+        <d6-attribute d6-scope="attribute" d6-controls="controls"  ng-repeat="attribute in character.attributes | orderOB:'skills.length':true track by attribute.name"></d6-attribute>
     </div>
     <div class="character-powers">
         <h2>

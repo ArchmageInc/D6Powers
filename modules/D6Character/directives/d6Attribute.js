@@ -9,7 +9,8 @@
           controller:   'AttributeCtlr',
           templateUrl:  'modules/D6Character/views/attribute.html',
           scope:  {
-            'attribute': '=d6Scope'
+            'attribute': '=d6Scope',
+            'controls':  '=d6Controls'
           }
         };
       }

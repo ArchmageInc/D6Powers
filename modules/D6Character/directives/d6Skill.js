@@ -9,7 +9,8 @@
           controller:   'SkillCtlr',
           templateUrl:  'modules/D6Character/views/skill.html',
           scope:  {
-            'skill': '=d6Scope'
+            'skill':    '=d6Scope',
+            'controls': '=d6Controls'
           }
         };
       }

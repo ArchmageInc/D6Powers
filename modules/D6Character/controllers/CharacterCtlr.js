@@ -2,13 +2,14 @@
 
 (function(ng){
     ng.module('D6Character').controller('CharacterCtlr',[
+        '$window',
         '$scope',
         '$q',
         'D6Utils',
         'D6Toolbox',
         'D6Tool',
         'D6Character',
-        function CharacterController($scope,$q,$d6,$toolbox,Tool,Character){
+        function CharacterController($window,$scope,$q,$d6,$toolbox,Tool,Character){
             'use strict';
             
             var characterWatchers = [];
@@ -22,7 +23,23 @@
             function CharacterWatcher(path){
               this.path   = path;
               this.cancel = $scope.$watch(path,function(newValue,oldValue){
-                onChangeCharacter(newValue,oldValue,path);
+                if(newValue===oldValue || newValue===null || oldValue===null){
+                  return;
+                }
+                if($scope.controls.undoing || $scope.controls.redoing || !$scope.controls.editing){
+                  $scope.controls.undoing = false;
+                  $scope.controls.redoing = false;
+                  return;
+                }
+
+                if($scope.controls.revision<$scope.character.revisions.length){
+                  $scope.character.revisions.splice($scope.controls.revision,$scope.character.revisions.length-$scope.controls.revision);
+                }
+                $scope.character.revisions.push(new CharacterRevision(path,oldValue,newValue));
+
+                $scope.controls.revision++;
+
+                $scope.controls.changes =  true;
               });
             }
             
@@ -41,25 +58,6 @@
                 $scope.character.bodyPoints = 20+$d6.roll(Number(newPhysiqueRank));
               }
             }
-            function onChangeCharacter(newValue,oldValue,path){
-              if(newValue===oldValue || newValue===null || oldValue===null){
-                return;
-              }
-              if($scope.controls.undoing || $scope.controls.redoing || !$scope.controls.editing){
-                $scope.controls.undoing = false;
-                $scope.controls.redoing = false;
-                return;
-              }
-              
-              if($scope.controls.revision<$scope.character.revisions.length){
-                $scope.character.revisions.splice($scope.controls.revision,$scope.character.revisions.length-$scope.controls.revision);
-              }
-              $scope.character.revisions.push(new CharacterRevision(path,oldValue,newValue));
-              
-              $scope.controls.revision++;
-              
-              $scope.controls.changes =  true;
-            };
             
             function undoChanges(){
               while(undo());
@@ -118,6 +116,12 @@
                 $scope.controls.changes = false;
                 $scope.controls.editing = false;
               });
+            }
+            
+            function editCharacter(){
+              applyCharacterWatch();
+              $scope.controls.editing  = true;
+              
             }
             
             function closeRemoveDialog(){
@@ -203,9 +207,7 @@
                 show: function(){
                   return !$scope.controls.editing;
                 },
-                use: function(){
-                  $scope.controls.editing = true;
-                }
+                use: editCharacter
               }),
               new Tool({
                 icon: 'remove2',
@@ -218,6 +220,14 @@
                   var def   = $q.defer();
                   def.promise.then(removeCharacter).finally(closeRemoveDialog);
                   $scope.controls.confirmations.remove = def;
+                }
+              }),
+              new Tool({
+                icon: 'print',
+                name: 'print',
+                description: "Print Character",
+                use: function(){
+                  $window.print();
                 }
               })
             ];

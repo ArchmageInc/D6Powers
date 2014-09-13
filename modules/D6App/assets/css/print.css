@@ -5,7 +5,7 @@
     .no-print, .no-print *,[data-description]:hover:after{
         display: none !important;
     }
-    *:hover{
+    [data-description]:hover{
         color: inherit !important;
     }
 }
