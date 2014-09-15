@@ -20,6 +20,10 @@
             $scope.$on('$locationChangeStart',checkAuthPath);
             
             $scope.auth = $firebaseAuth;
+            
+            $scope.characterId      = "-JWu5oeIQB5wSoXavhQb";
+            $scope.characterUserId  = "google:100388415844532364293";
+            
         }
     ]);
 })(angular);

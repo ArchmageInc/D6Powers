@@ -72,6 +72,10 @@
               }
             }
             
+            function onChangeLoad(newLoading){
+              $scope.controls.loading = newLoading;
+            }
+            
             function undoChanges(){
               while(undo());
               $scope.character.revisions.splice(0,$scope.character.revisions.length);
@@ -156,18 +160,20 @@
                 undoing:  false,
                 redoing:  false,
                 invalid:  false,
+                loading:  true,
                 revision: 0
               });
             }
             
-            $scope.character  = new Character();
-                        
+            
+            
             $scope.controls   = {
               editing:  false,
               changes:  false,
               undoing:  false,
               redoing:  false,
               invalid:  false,
+              loading:  true,
               revision: 0,
               confirmations:  {
                 remove: null,
@@ -175,7 +181,17 @@
               }
             };
             
+            if($scope.characterUserId && $scope.characterId){
+               Character.get($scope.characterUserId,$scope.characterId).then(function($character){
+                 $scope.character         = $character;
+                 $scope.controls.loading  = $scope.character.loading;
+               });
+            }else{
+              $scope.character        = new Character();
+              $scope.controls.loading = $scope.character.loading;
+            }
             $scope.$watch('character.attributes.Physique.rank',onChangePhysique);
+            $scope.$watch('character.loading',onChangeLoad);
             $scope.$watchCollection('character',applyCharacterWatch);
             
             var tools = [
@@ -184,10 +200,16 @@
                 name: 'Regenerate',
                 description: 'Regenerate Character',
                 show: function(){
-                  return $scope.character.new;
+                  if($scope.character){
+                    return $scope.character.new;
+                  }
+                  return false;
                 },
                 disable: function(){
-                  return !$scope.character.new;
+                  if($scope.character){
+                    return !$scope.character.new;
+                  }
+                  return true;
                 },
                 use:  function(){
                   if($scope.controls.changes){
@@ -236,7 +258,11 @@
                   return $scope.controls.changes;
                 },
                 disable: function(){
-                  return $scope.controls.revision>=$scope.character.revisions.length;
+                  if($scope.character){
+                    return $scope.controls.revision>=$scope.character.revisions.length;
+                  }
+                  
+                  return true;                  
                 },
                 use:  redo
               }),
@@ -245,7 +271,10 @@
                 name: 'save',
                 description:  'Save Character',
                 show: function(){
-                  return $scope.controls.changes;
+                  if($scope.character){
+                    return $scope.controls.changes && $scope.character.editable;
+                  }
+                  return false;
                 },
                 use:  saveCharacter
               }),
@@ -254,7 +283,10 @@
                 name: 'edit',
                 description: 'Edit Character',
                 show: function(){
-                  return !$scope.controls.editing;
+                  if($scope.character){
+                    return !$scope.controls.editing && $scope.character.editable;
+                  }
+                  return false;
                 },
                 use: editCharacter
               }),
@@ -263,7 +295,10 @@
                 name: 'delete',
                 description: "Delete Character",
                 show: function(){
-                  return $scope.controls.editing;
+                  if($scope.character){
+                    return $scope.controls.editing && $scope.character.editable;
+                  }
+                  return false;
                 },
                 use: function(){
                   var def   = $q.defer();

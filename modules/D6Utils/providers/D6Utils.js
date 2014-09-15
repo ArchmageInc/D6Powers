@@ -9,25 +9,42 @@
           return Object.keys(this).length;
         };
         
-        function D6Property(object,property,value,getter){
+        function D6Property(object,property,value){
+          var getter;
           var config  = {
             enumerable:   false,
             configurable: false
           };
-          if(value===undefined && object[property]!==undefined){
+          if(property.match(/rw:/i) && !property.match(/get:/i)){
+            config.writable = true;
+          }
+          property  = property.replace(/rw:/i,"");
+          
+          if(typeof value==="function" && property.match(/get:/i)){
+            getter    = value;
+            value     = undefined;
+            property  = property.replace(/get:/i,"");
+          }else if(value===undefined && object[property]!==undefined){
             value = object[property];
             delete object[property];
           }
           
-          if(property==="length"){
+          if(getter){
+            config.get  = getter;
+          }else if(property==="length"){
             config.get  = D6GetLength;
-          }else if(typeof getter==="function"){
-            config.get  = value;
           }else{
-            config.writable = false;
             config.value    = value;
           }
+          
           Object.defineProperty(object,property,config);
+          return object;
+        }
+        
+        function D6Properties(object,properties){
+          ng.forEach(properties,function(value,property){
+            D6Property(object,property,value);
+          });
           return object;
         }
         
@@ -103,12 +120,13 @@
         };
         
         var D6Utils = {
-          roll:           D6Roll,
-          addD6Property:  D6Property,
-          getFlatPaths:   D6GetFlatPaths,
-          getFromPath:    D6GetFromPath,
-          clone:          D6DeepClone,
-          extend:         D6DeepExtend
+          roll:             D6Roll,
+          addD6Property:    D6Property,
+          addD6Properties:  D6Properties,
+          getFlatPaths:     D6GetFlatPaths,
+          getFromPath:      D6GetFromPath,
+          clone:            D6DeepClone,
+          extend:           D6DeepExtend
         };
         
         

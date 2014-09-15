@@ -18,7 +18,7 @@
         function AttributeList(attributes){
           var attributeList = this;
           ng.forEach(attributes,function(attribute){
-            attributeList[attribute.name]  = new Attribute(attribute.name);
+            attributeList[attribute.name]  = new Attribute(attribute.name,attribute);
           });
         }
         $d6.addD6Property(AttributeList.prototype,'length');

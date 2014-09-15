@@ -26,7 +26,7 @@
         function SkillList(attribute,skills){
           var skillList = this;
           ng.forEach(skills,function(skill){
-            skillList[skill.name]  = new Skill(attribute,skill.name);
+            skillList[skill.name]  = new Skill(attribute,skill.name,skill);
           });
         }
         $d6.addD6Property(SkillList.prototype,'length');

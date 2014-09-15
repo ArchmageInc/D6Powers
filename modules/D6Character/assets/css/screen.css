@@ -5,7 +5,10 @@
     border-radius: 1em;
     height: 100%;
 }
-
+.character-sheet .loading{
+    width: 24px;
+    height: 24px;
+}
 .character-sheet .character-info{
     width: 60%;
     display: inline-block;

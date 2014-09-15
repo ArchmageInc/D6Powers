@@ -10,20 +10,23 @@
         
         var $sock   = new Sock('attributes');
         
-        function D6Attribute(attributeName){
+        function D6Attribute(attributeName,$attribute){
           var attribute = this;
           ng.extend(this,{
             rank: 1,
             pips: 0,
             name: attributeName,
             max:  5
-          });
+          },$attribute);
           $d6.addD6Property(attribute,'max');
           $sock.get({name:attributeName}).then(function($attribute){
             $d6.addD6Property(attribute,'description',$attribute.description);
+            attribute.skills  = new SkillList(attribute,attribute.skills);
+            /*
             SkillList.getSkills({attribute:attributeName}).then(function($skills){
               attribute.skills  = new SkillList(attribute,$skills);
             });
+            */
           });
           
         }

@@ -7,7 +7,7 @@
       function($d6,Sock){
         'use strict';
                    
-        function D6Skill(attribute,skillName){
+        function D6Skill(attribute,skillName,$skill){
           var skill       = this;
           var $sock       = new Sock('attributes/'+attribute.name+'/skills');
           ng.extend(this,{
@@ -15,7 +15,7 @@
             attribute: attribute.name,
             rank:     0,
             pips:     0
-          });
+          },$skill);
           $d6.addD6Property(skill,'attribute');
           $sock.get({name:skillName}).then(function($skill){
             $d6.addD6Property(skill,'description',$skill.description);

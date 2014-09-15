@@ -26,6 +26,19 @@
           return name;
         }
         
+        function getUniqeRandoms(total,start,end,prev){
+          prev      = prev  || [];
+          var rand  = Math.round(Math.random()*(end-start))+start;
+          while(prev.indexOf(rand)!==-1){
+            rand  = Math.round(Math.random()*(end-start))+start;
+          }
+          prev.push(rand);
+          for(var i=1;i<total;i++){
+            prev  = prev.concat(getUniqeRandoms(1,start,end,prev));
+          }
+          return prev;
+        }
+        
         var D6NameGenerator = {
           fullName: function(gender){
             gender  = ["Male","Female"].indexOf(gender)!==-1 ? gender : "Male";
