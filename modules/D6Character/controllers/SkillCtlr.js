@@ -9,8 +9,9 @@
             
             function onChangeRank(newValue){
               if(newValue<0){
-                $scope.skill.rank = 0;
-                $scope.skill.pips = 0;
+                $scope.skill.rank       = 0;
+                $scope.skill.pips       = 0;
+                $scope.controls.invalid = true;
               }
             };
             
@@ -24,8 +25,9 @@
                 $scope.skill.rank--;
               }
               if($scope.skill.rank<0){
-                $scope.skill.rank = 0;
-                $scope.skill.pips = 0;
+                $scope.skill.rank       = 0;
+                $scope.skill.pips       = 0;
+                $scope.controls.invalid = true;
               }
             }
             

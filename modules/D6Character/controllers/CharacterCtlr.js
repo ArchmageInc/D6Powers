@@ -26,27 +26,40 @@
                 if(newValue===oldValue || newValue===null || oldValue===null){
                   return;
                 }
-                if($scope.controls.undoing || $scope.controls.redoing || !$scope.controls.editing){
+                if($scope.controls.invalid){
+                  //console.log("["+$scope.controls.revision+"] "+path+": "+newValue+" - invalid")
+                  /*
+                   * An invalid change may affect more than one revision as each change is it's own revision
+                   * For example A skill is increased from 2D+3. The pips change to 0, and the rank changes to 3
+                   * This is a problem.
+                   */
+                  $scope.character.revisions.pop();
+                  $scope.controls.revision--;
+                }
+                if($scope.controls.invalid || $scope.controls.undoing || $scope.controls.redoing || !$scope.controls.editing){
                   $scope.controls.undoing = false;
                   $scope.controls.redoing = false;
+                  $scope.controls.invalid = false;
                   return;
                 }
-
+                
                 if($scope.controls.revision<$scope.character.revisions.length){
                   $scope.character.revisions.splice($scope.controls.revision,$scope.character.revisions.length-$scope.controls.revision);
                 }
                 $scope.character.revisions.push(new CharacterRevision(path,oldValue,newValue));
-
+                //console.log("["+$scope.controls.revision+"] "+path+": "+newValue)
                 $scope.controls.revision++;
 
                 $scope.controls.changes =  true;
               });
             }
-            
-            function applyCharacterWatch(){
+            function unwatchCharacter(){
               while(characterWatchers.length){
                 characterWatchers.pop().cancel();
               }
+            }
+            function applyCharacterWatch(){
+              unwatchCharacter();
               
               ng.forEach($d6.getFlatPaths($scope.character,'character'),function(path){
                 characterWatchers.push(new CharacterWatcher(path));
@@ -134,6 +147,19 @@
               $scope.controls.confirmations.changes  = null;
             }
             
+            function generateCharacter(){
+              unwatchCharacter();
+              $scope.character  = new Character();
+              ng.extend($scope.controls,{
+                editing:  false,
+                changes:  false,
+                undoing:  false,
+                redoing:  false,
+                invalid:  false,
+                revision: 0
+              });
+            }
+            
             $scope.character  = new Character();
                         
             $scope.controls   = {
@@ -141,6 +167,7 @@
               changes:  false,
               undoing:  false,
               redoing:  false,
+              invalid:  false,
               revision: 0,
               confirmations:  {
                 remove: null,
@@ -152,6 +179,26 @@
             $scope.$watchCollection('character',applyCharacterWatch);
             
             var tools = [
+              new Tool({
+                icon: 'spinner5',
+                name: 'Regenerate',
+                description: 'Regenerate Character',
+                show: function(){
+                  return $scope.character.new;
+                },
+                disable: function(){
+                  return !$scope.character.new;
+                },
+                use:  function(){
+                  if($scope.controls.changes){
+                    var def   = $q.defer();
+                    def.promise.then(generateCharacter).finally(closeChangeDialog);
+                    $scope.controls.confirmations.changes = def;
+                  }else{
+                    generateCharacter();
+                  }
+                }
+              }),
               new Tool({
                 icon: 'blocked',
                 name: 'cancel',

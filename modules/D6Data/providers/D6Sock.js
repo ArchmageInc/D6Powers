@@ -16,28 +16,35 @@
         D6Sock.prototype={
           get:  function(query,extrapolate){
             extrapolate = extrapolate===true;
-            var $sock   = this.$sock;            
-            return $sock.$asArray().$loaded().then(function($array){
-              if(!query && !extrapolate){
-                return $array;
-              }
-              var results = $filter('filter')($array,query);
-              if(!extrapolate){
-                if(results.length===1){
-                  return results[0];
+            var $sock   = this.$sock;
+            if(typeof query==="function"){
+              query = query();
+            }
+            if(typeof query==="string" || typeof query==="number"){
+              return $firebase($sock.$ref().child(String(query))).$asObject().$loaded();
+            }else{
+              return $sock.$asArray().$loaded().then(function($array){
+                if(!query && !extrapolate){
+                  return $array;
                 }
-                return results;
-              }
-              var objects = [];
-              for(var i=0;i<results.length;i++){
-                var $object = $array.$getRecord($array.$keyAt(results[i]));
-                objects.push($object);
-              }
-              if(objects.length===1){
-                return objects[0];
-              }
-              return objects;
-            });
+                var results = $filter('filter')($array,query);
+                if(!extrapolate){
+                  if(results.length===1){
+                    return results[0];
+                  }
+                  return results;
+                }
+                var objects = [];
+                for(var i=0;i<results.length;i++){
+                  var $object = $array.$getRecord($array.$keyAt(results[i]));
+                  objects.push($object);
+                }
+                if(objects.length===1){
+                  return objects[0];
+                }
+                return objects;
+              });
+            }
           },
           remove: function(object){
             var id  = object.$id || object.id;

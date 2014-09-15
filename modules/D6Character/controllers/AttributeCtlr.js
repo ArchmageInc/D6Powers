@@ -24,12 +24,14 @@
                 $scope.attribute.rank--;
               }
               if($scope.attribute.rank>=$scope.attribute.max){
-                $scope.attribute.pips = 0;
-                $scope.attribute.rank = $scope.attribute.max;
+                $scope.attribute.pips   = 0;
+                $scope.attribute.rank   = $scope.attribute.max;
+                $scope.controls.invalid = true;
               }
               if($scope.attribute.rank<1){
-                $scope.attribute.rank = 1;
-                $scope.attribute.pips = 0;
+                $scope.attribute.rank   = 1;
+                $scope.attribute.pips   = 0;
+                $scope.controls.invalid = true;
               }
             }
             

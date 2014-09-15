@@ -4,9 +4,10 @@
     ng.module('D6Character').factory('D6Character',[
       '$firebaseAuth',
       'D6Utils',
+      'D6NameGenerator',
       'D6Sock',
       'D6AttributeList',
-      function ($auth,$d6,Sock,AttributeList){
+      function ($auth,$d6,$nameGenerator,Sock,AttributeList){
         'use strict';
                 
         function D6Character(){
@@ -14,9 +15,9 @@
           
           ng.extend(this,{
             id:               null,
-            name:             "Random Name",
-            alias:            "Super Dude",
-            occupation:       "Worker",
+            name:             "",
+            alias:            "",
+            occupation:       "",
             archetype:        "Adventurer",
             species:          "Human",
             gender:           ["Male","Female"][Math.round(Math.random())],
@@ -42,7 +43,15 @@
               uid:          $auth.user.uid
             }
           });
-          
+          $nameGenerator.fullName(character.gender).then(function($name){
+            character.name = $name;
+          });
+          $nameGenerator.alias(character.gender).then(function($name){
+            character.alias = $name;
+          });
+          $nameGenerator.occupation().then(function($occupation){
+            character.occupation  = $occupation;
+          });
           $d6.addD6Property(this,'revisions',[]);
           
           this.$sock._uniqueId().then(function(uid){
