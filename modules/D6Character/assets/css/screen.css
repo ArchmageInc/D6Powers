@@ -1,15 +1,15 @@
-.character-sheet{
+d6-character{
+    display: block;
     width: 768px;
-    padding: 0.5em;
     margin: 0 0.5em;
     border-radius: 1em;
     height: 100%;
 }
-.character-sheet .loading{
+d6-character .loading{
     width: 24px;
     height: 24px;
 }
-.character-sheet .character-info{
+d6-character .character-info{
     width: 60%;
     display: inline-block;
     white-space: nowrap;

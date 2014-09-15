@@ -8,21 +8,28 @@
         function($scope,$firebaseAuth,$location){
             'use strict';
             
-            var checkAuthPath = function(){
-              if(!$firebaseAuth.user.authenticated){
-                $location.path('/login');
-              }else if($location.path()=="/login"){
-                $location.path('/home');
-              }
-            };
+            var lastPath  = "/";
             
-            $scope.$watch('auth.user.authenticated',checkAuthPath);
-            $scope.$on('$locationChangeStart',checkAuthPath);
+            function checkAuth(){
+              if(!$firebaseAuth.user.authenticated && $location.path()!=='/login'){
+                lastPath  = $location.url();
+                $location.path('/login');
+              }else if($firebaseAuth.user.authenticated && $location.path()==="/login"){
+                $location.url(lastPath);
+              }
+            }
+            
+            function setLastPath(){
+              if($location.path()!=='/login'){
+                lastPath  = $location.url();
+              }
+            }
+            
+            $scope.$watch('auth.user.authenticated',checkAuth);
+            $scope.$on('$locationChangeSuccess',setLastPath);
+            $scope.$on('$locationChangeStart',checkAuth);
             
             $scope.auth = $firebaseAuth;
-            
-            $scope.characterId      = "-JWu5oeIQB5wSoXavhQb";
-            $scope.characterUserId  = "google:100388415844532364293";
             
         }
     ]);

@@ -1,98 +1,96 @@
-<div ng-controller="CharacterCtlr" class="character-sheet">
-    <div class="loading left" ng-show="controls.loading"></div>
+<div class="character-info">
     <h1 class="alias">
         {{ character.alias }}
+        <div class="loading right" ng-show="controls.loading"></div>
     </h1>
-    <div class="character-info">
-        <div>
-            <span>
-                Character Name:
-            </span>
-            <span class="character-name">
-                {{ character.name }}
-            </span>
-        </div>
-        <div>
-            <span>
-                Player Name:
-            </span>
-            <span class="character-player">
-                {{ character.player.displayName }}
-            </span>
-        </div>
-        <div ng-show="character.occupation">
-            <span>
-                Occupation:
-            </span>
-            <span class="character-occupation">
-                {{ character.occupation }}
-            </span>
-        </div>
-        <div ng-show="character.archetype">
-            <span>
-                Archetype:
-            </span>
-            <span class="character-archetype">
-                {{ character.archetype }}
-            </span>
-        </div>
-        <div>
-            <span>
-                Species / Gender:
-            </span>
-            <span class="character-species">
-                {{ character.species }} / {{ character.gender }}
-            </span>
-        </div>
-        <div class="multi-line">
-            <span>
-                Level:
-            </span>
-            <span>
-                {{ character.powerLevel }}
-            </span>
-            <span>
-                Age:
-            </span>
-            <span>
-                {{ character.age }}
-            </span>
-            <span>
-                Height:
-            </span>
-            <span>
-                {{ character.height }}
-            </span>
-            <span>
-                Weight:
-            </span>
-            <span>
-                {{ character.weight }} lbs
-            </span>
-            <span>
-                Points:
-            </span>
-            <span>
-                {{ character.spentPoints }}
-            </span>
-        </div>
+    <div>
+        <span>
+            Character Name:
+        </span>
+        <span class="character-name">
+            {{ character.name }}
+        </span>
     </div>
-    <div class="character-stats">
-        <d6-attribute d6-scope="attribute" d6-controls="controls"  ng-repeat="attribute in character.attributes | orderOB:'skills.length':true track by attribute.name"></d6-attribute>
+    <div>
+        <span>
+            Player Name:
+        </span>
+        <span class="character-player">
+            {{ character.player.displayName }}
+        </span>
     </div>
-    <div class="character-powers">
-        <h2>
-            Powers
-        </h2>
+    <div ng-show="character.occupation">
+        <span>
+            Occupation:
+        </span>
+        <span class="character-occupation">
+            {{ character.occupation }}
+        </span>
     </div>
-    <d6-dialog d6-confirm="controls.confirmations.remove">
-        <p>
-            Are you sure you want to remove this character? This action cannot be undone!
-        </p>
-    </d6-dialog>
-    <d6-dialog d6-confirm="controls.confirmations.changes">
-        <p>
-            Are you sure you want to lose all unsaved changes?
-        </p>
-    </d6-dialog>
+    <div ng-show="character.archetype">
+        <span>
+            Archetype:
+        </span>
+        <span class="character-archetype">
+            {{ character.archetype }}
+        </span>
+    </div>
+    <div>
+        <span>
+            Species / Gender:
+        </span>
+        <span class="character-species">
+            {{ character.species }} / {{ character.gender }}
+        </span>
+    </div>
+    <div class="multi-line">
+        <span>
+            Level:
+        </span>
+        <span>
+            {{ character.powerLevel }}
+        </span>
+        <span>
+            Age:
+        </span>
+        <span>
+            {{ character.age }}
+        </span>
+        <span>
+            Height:
+        </span>
+        <span>
+            {{ character.height }}
+        </span>
+        <span>
+            Weight:
+        </span>
+        <span>
+            {{ character.weight }} lbs
+        </span>
+        <span>
+            Points:
+        </span>
+        <span>
+            {{ character.spentPoints }}
+        </span>
+    </div>
 </div>
+<div class="character-stats">
+    <d6-attribute d6-scope="attribute" d6-controls="controls"  ng-repeat="attribute in character.attributes | orderOB:'skills.length':true track by attribute.name"></d6-attribute>
+</div>
+<div class="character-powers">
+    <h2>
+        Powers
+    </h2>
+</div>
+<d6-dialog d6-confirm="controls.confirmations.remove">
+    <p>
+        Are you sure you want to remove this character? This action cannot be undone!
+    </p>
+</d6-dialog>
+<d6-dialog d6-confirm="controls.confirmations.changes">
+    <p>
+        Are you sure you want to lose all unsaved changes?
+    </p>
+</d6-dialog>

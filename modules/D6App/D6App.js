@@ -16,9 +16,11 @@
 
       $routeProvider
         .when('/',{
-          templateUrl:  'modules/D6Character/views/character.html'
+          templateUrl:  'modules/D6App/views/home.html'
         }).when('/login',{
           templateUrl:  'modules/D6App/views/login.html' 
+        }).when('/new',{
+          templateUrl:  'modules/D6App/views/new.html'
         }).otherwise({
           redirectTo: '/'
         });

@@ -7,7 +7,13 @@
         function($scope,$toolbox){
             'use strict';
             
+            function emptyToolbox(){
+              $toolbox.empty();
+            }
+            
             $scope.tools  = $toolbox.tools;
+            
+            $scope.$on('$locationChangeStart',emptyToolbox);
         }
     ]);
 })(angular);

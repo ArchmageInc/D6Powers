@@ -3,13 +3,14 @@
 (function(ng){
     'use strict';
     ng.module('D6UI').factory('D6Toolbox',[
+      'D6Utils',
       'D6Tool',
-      function(Tool){
+      function($d6,Tool){
         
         function D6Toolbox(){
           this.tools  = [];
         }
-        D6Toolbox.prototype = {
+        $d6.addD6Properties(D6Toolbox.prototype,{
           add:  function(tool,index){
             if(ng.isArray(tool)){
               for(var i=0;i<tool.length;i++){
@@ -36,8 +37,11 @@
             if(index!==-1){
               this.tools.splice(index,1);
             }
+          },
+          empty: function(){
+            this.tools.splice(0,this.tools.length);
           }
-        };
+        });
         
         return (new D6Toolbox());
         

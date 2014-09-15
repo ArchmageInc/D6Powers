@@ -296,7 +296,7 @@
                 description: "Delete Character",
                 show: function(){
                   if($scope.character){
-                    return $scope.controls.editing && $scope.character.editable;
+                    return $scope.controls.editing && $scope.character.editable && !$scope.character.new;
                   }
                   return false;
                 },

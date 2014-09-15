@@ -9,6 +9,23 @@
       function($firebase,$filter,firebaseUrl,$d6){
         'use strict';
         
+        function cleanObject($object){
+          try{
+            if(ng.isArray($object)){
+              for(var i=0;i<$object.length;i++){
+                cleanObject($object[i]);
+              }
+            }
+            $d6.addD6Properties($object,{
+              "$id":        undefined,
+              "$priority":  undefined
+            });
+            return $object;
+          }catch(ex){
+            return $object;
+          }
+        }
+        
         function D6Sock(apiEnd){
           $d6.addD6Property(this,'$sock',$firebase(new Firebase(firebaseUrl+"/"+apiEnd+"/")));
           
@@ -21,18 +38,20 @@
               query = query();
             }
             if(typeof query==="string" || typeof query==="number"){
-              return $firebase($sock.$ref().child(String(query))).$asObject().$loaded();
+              return $firebase($sock.$ref().child(String(query))).$asObject().$loaded().then(function($object){
+                return cleanObject($object);
+              });
             }else{
               return $sock.$asArray().$loaded().then(function($array){
                 if(!query && !extrapolate){
-                  return $array;
+                  return cleanObject($array);
                 }
                 var results = $filter('filter')($array,query);
                 if(!extrapolate){
                   if(results.length===1){
-                    return results[0];
+                    return cleanObject(results[0]);
                   }
-                  return results;
+                  return cleanObject(results);
                 }
                 var objects = [];
                 for(var i=0;i<results.length;i++){
@@ -40,9 +59,9 @@
                   objects.push($object);
                 }
                 if(objects.length===1){
-                  return objects[0];
+                  return cleanObject(objects[0]);
                 }
-                return objects;
+                return cleanObject(objects);
               });
             }
           },
@@ -55,13 +74,12 @@
           },
           save: function(object){
             var id  = object.$id || object.id;
-            
             if(object.new || !object.created){
-              delete object.new;
-              object.updated =  Date.now();
+              object.new      = false;
+              object.updated  = Date.now();
               object.created  = Date.now();
             }
-            return this.$sock.$set(id,object);
+            return this.$sock.$set(id,cleanObject(object));
             
           },
           _uniqueId: function(){

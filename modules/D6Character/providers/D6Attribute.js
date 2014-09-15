@@ -22,13 +22,7 @@
           $sock.get({name:attributeName}).then(function($attribute){
             $d6.addD6Property(attribute,'description',$attribute.description);
             attribute.skills  = new SkillList(attribute,attribute.skills);
-            /*
-            SkillList.getSkills({attribute:attributeName}).then(function($skills){
-              attribute.skills  = new SkillList(attribute,$skills);
-            });
-            */
           });
-          
         }
         
         return D6Attribute;
