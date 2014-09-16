@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+RewriteRule !\.(js|ico|txt|gif|jpg|png|svg|css|pdf|html|swf|swz|xml|json|eot|ttf|woff)$ index.html
+</IfModule>

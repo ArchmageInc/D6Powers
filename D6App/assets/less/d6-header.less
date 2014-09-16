@@ -1,0 +1,30 @@
+d6-header{
+    padding: 0.25em 1em;
+    border-bottom: 1em solid @lt-grey;
+    display: block;
+    a{
+        font-size: 1.25em;
+    }
+    d6-toolbox{
+        margin-top: -2em;
+        display: inline-block;
+        float: right;
+    }
+    nav{
+        display: inline-block;
+        a:first-child:before{
+            content: '|';
+            margin: 0 0.5em;
+        }
+        a:after{
+            content: '|';
+            margin: 0 0.5em;
+        }
+        a:hover:after,a:hover:before{
+            color: @dark;
+        }
+    }
+    d6-auth-profile{
+        float: right;
+    }
+}
