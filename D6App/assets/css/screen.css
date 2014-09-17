@@ -1,3 +1,4 @@
+@import url('http://fonts.googleapis.com/css?family=Exo+2:400,700|Bangers|Macondo') screen, print;
 @import url("icomoon.css") screen, print;
 @import url("greek.css") screen, print;
 * {
@@ -255,6 +256,11 @@ d6-character-sheet .powers {
 d6-character {
   display: block;
   margin: 0.25em;
+  font-size: 1.5em;
+  font-family: 'Bangers', cursive;
+}
+d6-character a {
+  color: #ef5132;
 }
 d6-modal {
   opacity: 0.8;
@@ -318,7 +324,7 @@ d6-dialog {
   right: 100%;
 }
 .loader {
-  background: url('../img/loading2.gif') no-repeat center;
+  background: url('../img/loading.gif') no-repeat center;
   background-size: contain;
 }
 .login {

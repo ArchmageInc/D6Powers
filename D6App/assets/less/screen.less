@@ -1,7 +1,5 @@
-@import url("icomoon.css") screen, print;
-@import url("greek.css") screen, print;
-
 @import url("d6-mixins.less");
+@import url("d6-fonts.less");
 
 @dark:      #3a3c36;
 @lt-grey:   #f2f2f2;
@@ -22,7 +20,7 @@ body{
     color: @dark;
     font-size: 12px;
     margin: 0px;
-    font-family: 'Exo 2', sans-serif;
+    font-family: @font-normal;
     min-height: 100%;
 }
 
@@ -33,7 +31,7 @@ h1,.h1,h2,.h2,h3,.h3{
     
     color: @dk-orange;
     
-    font-family: 'Bangers', cursive;
+    font-family: @font-heading;
     font-weight: normal;
 }
 h1,.h1{

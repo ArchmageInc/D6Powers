@@ -3,25 +3,29 @@ module.exports = function(grunt) {
   grunt.initConfig({
     wiredep: {
       target: {
-          src: [
-            'index.html'
-          ],
-          cwd: '',
+        src: [
+          'index.html'
+        ],
+        options:{
           dependencies: true,
           devDependencies: true,
-          exclude: [],
-          fileTypes: {},
-          ignorePath: '',
-          overrides: {}
+          fileTypes:{
+            html:{
+              replace:{
+                js: '<script src="/{{filePath}}"></script>'
+              }
+            }
+          }
+        }
       }
     },
     less: {
       target:{
         options:{
-          paths:  ["modules/D6App/assets/less"]
+          paths:  ["D6App/assets/less"]
         },
         files: {
-          "modules/D6App/assets/css/screen.css": "modules/D6App/assets/less/screen.less"
+          "D6App/assets/css/screen.css": "D6App/assets/less/screen.less"
         }
         
       }
@@ -101,6 +105,25 @@ module.exports = function(grunt) {
         src: ['js/min/modules/*.js','js/min/*.js','js/min/providers/*.js','js/min/directives/*.js','js/min/filters/*.js','js/min/controllers/*.js'],
         dest: 'js/d6.min.js'
       }
+    },
+    clean:{
+      js:["js/min"]
+    },
+    watch:{
+      js:{
+        options:{
+          interrupt: true
+        },
+        files:  ['D6App/**/*.js'],
+        tasks:  ['js']
+      },
+      css:{
+        options:{
+          interrupt: true
+        },
+        files:  ['**/*.less'],
+        tasks:  ['css']
+      }
     }
   });
 
@@ -109,8 +132,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
-  // Default task.
-  grunt.registerTask('default', ['wiredep','less']);
-  grunt.registerTask('js', ['uglify','concat']);
+  grunt.registerTask('js', ['wiredep','uglify','concat','clean']);
+  grunt.registerTask('css', ['less']);
+  grunt.registerTask('default', ['js','css','watch']);
 };
