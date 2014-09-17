@@ -1,20 +1,20 @@
 /*global angular */
 
 (function(ng){
-  var app = ng.module('D6App', [
+  ng.module('D6App', [
     'ngRoute',
-    'FirebaseAuth',
-    'D6Data',
-    'D6Utils',
-    'D6UI',
-    'D6Character'
-  ]);
-  app.config([
+    'firebase',
+  ])
+  .value(
+    'FirebaseUrl',
+    'https://resplendent-inferno-5462.firebaseio.com/D6Powers'
+  )
+  .config([
     '$routeProvider',
     '$locationProvider',
     function ($routeProvider,$locationProvider) {
       'use strict';
-
+      
       $routeProvider
         .when('/',{
           controller:   'HomeCtlr',

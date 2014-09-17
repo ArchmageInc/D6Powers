@@ -1,0 +1,1 @@
+!function(ng){ng.module("D6App").factory("D6Auth",["D6User",function(User){var D6Auth={user:new User};return D6Auth.user.login(),D6Auth}])}(angular);

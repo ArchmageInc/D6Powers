@@ -1,22 +1,22 @@
-<div class="login" ng-hide="auth.user.authenticating">
+<div class="login" ng-hide="user.authenticating">
     <h1>
         Authentication Required
     </h1>
     <p>
         Choose from one of the authentication providers below:
     </p>
-    <p class="error" ng-show="auth.user.loginError">
+    <p class="error" ng-show="user.loginError">
         <span class="i-warning">
             
         </span>
         <span class="message">
-            {{auth.user.loginError.code}}
+            {{user.loginError.code}}
         </span>
     </p>
     <div>
-        <a class="i-twitter2 full" href="#" ng-click="auth.login('twitter')" title="Login with Twitter"></a>
-        <a class="i-facebook2 full" href="#" ng-click="auth.login('facebook')" title="Login with Facebook"></a>
-        <a class="i-googleplus3 full" href="#" ng-click="auth.login('google')" title="Login with Google+"></a>
-        <a class="i-github3 full" href="#" ng-click="auth.login('github')" title="Login with GitHub"></a>
+        <a class="i-twitter2 full" href="#" ng-click="user.login('twitter')" title="Login with Twitter"></a>
+        <a class="i-facebook2 full" href="#" ng-click="user.login('facebook')" title="Login with Facebook"></a>
+        <a class="i-googleplus3 full" href="#" ng-click="user.login('google')" title="Login with Google+"></a>
+        <a class="i-github3 full" href="#" ng-click="user.login('github')" title="Login with GitHub"></a>
     </div>
 </div>

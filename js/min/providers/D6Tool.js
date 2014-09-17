@@ -1,0 +1,1 @@
+!function(ng){"use strict";ng.module("D6App").factory("D6Tool",[function(){function D6Tool(properties){ng.extend(this,properties)}return D6Tool.prototype={icon:"blocked",name:"Tool",description:"",show:function(){return!0},disable:function(){return!1},use:function(){}},D6Tool}])}(angular);
