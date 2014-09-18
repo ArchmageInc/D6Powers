@@ -17,8 +17,8 @@
               }
             }
             $d6.addD6Properties($object,{
-              "$id":        undefined,
-              "$priority":  undefined
+              "rw:$id":        undefined,
+              "rw:$priority":  undefined
             });
             return $object;
           }catch(ex){

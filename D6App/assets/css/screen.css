@@ -262,7 +262,7 @@ d6-character {
 d6-character a {
   color: #ef5132;
 }
-d6-modal {
+.modal {
   opacity: 0.8;
   position: fixed;
   top: 0;
@@ -271,7 +271,7 @@ d6-modal {
   right: 0;
   background-color: #3a3c36;
 }
-d6-dialog {
+d6-dialog .dialog {
   max-width: 50%;
   min-width: 25%;
   display: block;

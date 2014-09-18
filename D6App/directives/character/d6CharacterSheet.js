@@ -9,8 +9,7 @@
           controller:   'CharacterCtlr',
           templateUrl:  '/D6App/views/character/character-sheet.html',
           scope:  {
-            'characterId':      '=d6CharacterId',
-            'characterUserId':  '=d6UserId'
+            'character':      '=d6Scope',
           }
         };
       }

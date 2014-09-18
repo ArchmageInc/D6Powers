@@ -1,9 +1,9 @@
 /*global angular */
 
 (function(ng){
-    'use strict';
     ng.module('D6App').factory('D6Tool',[
       function(){
+        'use strict';
         
         function D6Tool(properties){          
           ng.extend(this,properties);

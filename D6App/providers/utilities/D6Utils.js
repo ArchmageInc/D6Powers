@@ -81,22 +81,36 @@
         function D6DeepClone(object){
           var obj = {};
           function applyProperty(child,property){
-            if(typeof child==="object"){
+            if(ng.isArray(child)){
+              obj[property] = [];
+              for(var i=0;i<child.length;i++){
+                obj[property][i]  = D6DeepClone(child[i]);
+              }
+            }else if(typeof child==="object"){
               obj[property] = D6DeepClone(child);
             }else{
               obj[property] = child;
             }
           }
-          ng.forEach(object,applyProperty);
-          return obj;
+          if(ng.isArray(object)){
+            obj = [];
+            for(var i=0;i<object.length;i++){
+              obj[i]  = D6DeepClone(object[i]);
+            }
+            return obj;
+          }else if(typeof object==="object"){
+            ng.forEach(object,applyProperty);
+            return obj;
+          }
+          return object;
         }
         function D6DeepExtend(){
           var obj = arguments[0];
           function applyProperty(child,property){
-            if(typeof child==="object"){
-              obj[property] = D6DeepExtend(child);
-            }else if(typeof child!=="function"){
-              obj[property] = child;
+            if(typeof child==="object" && typeof obj[property]==="object"){
+              D6DeepExtend(obj[property],child);
+            }else{
+              obj[property] = D6DeepClone(child);
             }
           }
           for(var i=1;i<arguments.length;i++){
@@ -104,6 +118,63 @@
           }
           return obj;
         }
+        
+        function FromD6Diff(diff,reference){
+          if(!diff instanceof Diff){
+            D6Utils.log.warn("Invalid diff object");
+            return;
+          }
+          if(!reference){
+            D6Utils.log.warn("Invalid reference object for diff");
+            return;
+          }
+          
+          return D6DeepExtend({},reference,diff.oldValue,diff.newValue);
+        }
+        
+        function Diff(){};
+        D6Property(Diff.prototype,'length');
+        function D6Diff(obj1,obj2){
+          var diff      = new Diff();
+          var oldValue  = new Diff();
+          var newValue  = new Diff();
+         
+          var cdiff;
+          if(obj1===obj2){
+            return diff;
+          }
+          
+          ng.forEach(obj1,function(child,key){
+            if(!obj2 || obj2[key]===undefined){
+              oldValue[key]  = D6DeepClone(child);
+            }else if(typeof child==="object" && typeof obj2[key]!=="object"){
+              oldValue[key] = D6DeepClone(child);
+              newValue[key] = obj2[key];
+            }else if(typeof child!=="object" && typeof obj2[key]==="object"){
+              oldValue[key]  = child;
+              newValue[key] = D6DeepClone(obj2[key]);
+            }else if(typeof child==="object" && typeof obj2[key]==="object"){
+              cdiff = D6Diff(child,obj2[key]);
+              if(cdiff.oldValue.length){
+                oldValue[key]  = cdiff.oldValue;
+              }
+              if(cdiff.newValue.length){
+                newValue[key] = cdiff.newValue;
+              }
+            }else if(child!==obj2[key]){
+              oldValue[key]  = child;
+              newValue[key] = obj2[key];
+            }
+          });
+          ng.forEach(obj2,function(child,key){
+            if(!obj1 || obj1[key]===undefined){
+              newValue[key] = D6DeepClone(child);
+            }
+          });
+          diff.oldValue  = oldValue;
+          diff.newValue = newValue;
+          return diff;
+        };
         
         function D6Roll(number,explode,previous){
           previous  = previous || 0;
@@ -130,6 +201,7 @@
           getFromPath:      D6GetFromPath,
           clone:            D6DeepClone,
           extend:           D6DeepExtend,
+          diff:             D6Diff,
           log:  {
             info:   $log.info,
             warn:   $log.warn,

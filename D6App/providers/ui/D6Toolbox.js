@@ -1,11 +1,11 @@
 /*global angular */
 
 (function(ng){
-    'use strict';
     ng.module('D6App').factory('D6Toolbox',[
       'D6Utils',
       'D6Tool',
       function($d6,Tool){
+        'use strict';
         
         function D6Toolbox(){
           this.tools  = [];

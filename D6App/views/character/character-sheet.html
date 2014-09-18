@@ -1,7 +1,7 @@
 <div class="info">
     <h1 class="alias">
         {{ character.alias }}
-        <div class="loader" ng-show="controls.loading"></div>
+        <div class="loader" ng-show="character.controls.loading"></div>
     </h1>
     <div>
         <span>
@@ -77,20 +77,10 @@
     </div>
 </div>
 <div class="stats">
-    <d6-attribute d6-scope="attribute" d6-controls="controls"  ng-repeat="attribute in character.attributes | orderOB:'skills.length':true track by attribute.name"></d6-attribute>
+    <d6-attribute d6-scope="attribute" d6-controls="character.controls"  ng-repeat="attribute in character.attributes | orderOB:'skills.length':true track by attribute.name"></d6-attribute>
 </div>
 <div class="powers">
     <h2>
         Powers
     </h2>
 </div>
-<d6-dialog d6-confirm="controls.confirmations.remove">
-    <p>
-        Are you sure you want to remove this character? This action cannot be undone!
-    </p>
-</d6-dialog>
-<d6-dialog d6-confirm="controls.confirmations.changes">
-    <p>
-        Are you sure you want to lose all unsaved changes?
-    </p>
-</d6-dialog>

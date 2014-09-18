@@ -9,7 +9,7 @@
           templateUrl:  '/D6App/views/ui/dialog.html',
           transclude:   true,
           scope:  {
-            'confirmation': '=d6Confirm'
+            'control': '=d6Control'
           }
         };
       }

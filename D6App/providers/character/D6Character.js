@@ -1,6 +1,6 @@
 /*global angular, Math */
 
-(function(ng){
+(function(ng,$Math){
     ng.module('D6App').factory('D6Character',[
       '$q',
       'D6Auth',
@@ -11,12 +11,31 @@
       function ($q,$auth,$d6,$nameGenerator,Sock,AttributeList){
         'use strict';
         
-        function getPromise(character){
-          var promises;
+        function clearChanges(character){
+          ng.extend(character.controls,{
+              "revision":   0,
+              "changes":    false,
+              "loading":    false,
+              "editing":    false,
+              "redoing":    false,
+              "undoing":    false,
+              "invalid":    false
+            });
+            character.addRevision();
+        }
+        
+        function generate(character){
+          var promises  = {};
           if(character.id){
             character.attributes  = new AttributeList(character.attributes);
-            promises  = {};
+            clearChanges(character);
           }else{
+            ng.extend(character,{
+              age:    $Math.round($Math.random()*15+20),
+              height: $Math.round($Math.random()+5)+"'"+$Math.round($Math.random()*11)+"\"",
+              weight: $Math.round($Math.random()*150)+90,
+              gender: ["Male","Female"][$Math.round($Math.random())]
+            });
             promises = {
               "name": $nameGenerator.fullName(character.gender).then(function($name){
                 character.name = $name;
@@ -38,31 +57,30 @@
                 character.attributes  = new AttributeList(attributes);
                 return character.attributes;
               })
-            };
+            };            
           }
           
           return $q.all(promises);
         }
                         
         function D6Character($character){
-          var character   = this;
-          
-          ng.extend(this,{
+          var $this = this;
+          ng.extend($this,{
             id:               null,
             name:             "",
             alias:            "",
             occupation:       "",
             archetype:        "Adventurer",
             species:          "Human",
-            gender:           ["Male","Female"][Math.round(Math.random())],
+            gender:           "",
             powerLevel:       2,
-            age:              Math.round(Math.random()*15+20),
-            height:           Math.round(Math.random()+5)+"'"+Math.round(Math.random()*11)+"\"",
-            weight:           Math.round(Math.random()*150)+90,
+            age:              0,
+            height:           "0'0",
+            weight:           0,
             fatePoints:       0,
             kaPoints:         0,
             characterPoints:  0,
-            bodyPoints:       20,
+            bodyPoints:       0,
             physicalDamage:   1,
             movement:         10,
             funds:            0,
@@ -77,36 +95,104 @@
             }
           },$character);
           
-          $d6.addD6Properties(this,{
-            "revisions":  [],
-            "rw:loading": true,
-            "rw:$sock":   new Sock('characters/'+character.player.uid),
-            "editable":   (character.player.uid===$auth.user.uid),
-            "rw:new":     character.created===undefined
+          $d6.addD6Properties($this,{
+            "controls":     {
+              "revisions":  [],
+              "revision":   0,
+              "changes":    true,
+              "loading":    true,
+              "editing":    false,
+              "redoing":    false,
+              "undoing":    false,
+              "invalid":    false
+            },
+            "rw:$sock":     new Sock('characters/'+$this.player.uid),
+            "editable":     ($this.player.uid===$auth.user.uid),
+            "rw:new":       $this.created===undefined
           });
           
-          getPromise(this).finally(function(){
-            character.loading = false;
+          $this.controls.loading  = generate($this).then(function(){
+            $this.addRevision();
+            return $this;
+          }).finally(function(){
+            $this.controls.loading = false;
           });
         }
         
         $d6.addD6Properties(D6Character.prototype,{
           "length": undefined,
           "save":   function(){
-            var character     = this;
-            character.loading = true;
-            return character.$sock.save(character).then(function($character){
-              character.loading  = false;
-              return character;
-            });
+            var $this = this;
+            if($this.editable){
+              $this.controls.loading  = true;
+              return $this.$sock.save($this).then(function(){
+                clearChanges($this);
+                return $this;
+              });
+            }
           },
           "remove": function(){
-            var character     = this;
-            character.loading = true;
-            return character.$sock.remove(character).then(function($character){
-              character.loading  = false;
-              return character;
-            });
+            var $this = this;
+            if($this.editable){
+              $this.controls.loading  = true;
+              return $this.$sock.remove($this).then(function(){
+                clearChanges($this);
+                return $this;
+              });
+            }
+          },
+          "regenerate": function(){
+            var $this = this;
+            if($this.editable && $this.new){
+              $this.controls.loading  = true;
+              $this.id                = null;
+              return generate($this).then(function(){
+                clearChanges($this);
+                $this.controls.changes  = true;
+                return $this;
+              });
+            }
+          },
+          "edit": function(){
+            var $this = this;
+            $this.controls.editing  = ($this.editable && !$this.editing);
+          },
+          "undoAll": function(){
+            var $this = this;
+            clearChanges($this);
+            $d6.log.warn("Character Undo All not implemented");
+          },
+          "undo": function(){
+            var $this = this;
+            $this.controls.undoing  = true;
+            $this.controls.revision--;
+            var clone  = $this.controls.revisions[$this.controls.revision-1];
+            $d6.extend($this,clone);
+            console.log("[UNDO] Revision Index: "+$this.controls.revision+" / "+$this.controls.revisions.length)
+          },
+          "redo": function(){
+            var $this = this;
+            $this.controls.redoing  = true;
+            $this.controls.revision++;
+            var clone = $this.controls.revisions[$this.controls.revision-1];
+            $d6.extend($this,clone);
+            console.log("[REDO] Revision Index: "+$this.controls.revision+" / "+$this.controls.revisions.length)
+          },
+          "addRevision": function(){
+            var $this = this;
+            if($this.controls.undoing || $this.controls.redoing || !$this.controls.editing){
+              $this.controls.undoing  = false;
+              $this.controls.redoing  = false;
+              return;
+            }
+            $this.controls.changes  = true;
+            if($this.controls.revision<$this.controls.revisions.length){
+              $this.controls.revisions.splice($this.controls.revision,$this.controls.revisions.length);
+            }
+            $this.controls.revision++;
+            $this.controls.revisions.push($d6.clone($this));
+            console.log("[EDIT] Revision Index: "+$this.controls.revision+" / "+$this.controls.revisions.length)
+            console.log($this.controls.revisions)
           }
         });
         
@@ -124,4 +210,4 @@
         return D6Character;
       }
     ]);
-})(angular);
+})(angular,Math);

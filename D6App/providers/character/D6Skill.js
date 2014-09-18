@@ -1,6 +1,6 @@
-/*global angular */
+/*global angular, Math */
 
-(function(ng){
+(function(ng,$Math){
     ng.module('D6App').factory('D6Skill',[
       'D6Utils',
       'D6Sock',
@@ -21,8 +21,21 @@
             $d6.addD6Property(skill,'description',$skill.description);
           });
         }
+        $d6.addD6Properties(D6Skill.prototype,{
+          "adjust": function(adjPips){
+            var newRank,newPips,totalPips;
+            if(!adjPips || isNaN(adjPips=parseInt(adjPips))){
+              return;
+            }
+            totalPips = $Math.max(0,adjPips+this.pips+this.rank*4);
+            newRank   = $Math.floor(totalPips/4);
+            newPips   = totalPips%4;
+            this.rank = newRank;
+            this.pips = newPips;
+          }
+        });
         
         return D6Skill;
       }
     ]);
-})(angular);
+})(angular,Math);

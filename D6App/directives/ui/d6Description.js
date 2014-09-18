@@ -28,6 +28,7 @@
             'description':  '=d6Description'
           },
           link:     function($scope,$el,attrs){
+            watchDescription($scope,$el)();
             $el.on('mouseover',watchDescription($scope,$el));
           }   
         };

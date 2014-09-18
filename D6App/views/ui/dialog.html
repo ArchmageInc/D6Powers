@@ -1,10 +1,10 @@
-<div ng-show="confirmation">
+<div ng-show="control.confirmation">
     <div class="modal"></div>
     <div class="dialog">
         <div ng-transclude></div>
         <div class="right">
-            <button ng-click="confirmation.resolve(true)">Okay</button>
-            <button ng-click="confirmation.reject('Cancel')">Cancel</button>
+            <button ng-click="control.confirmation.resolve(true)">Okay</button>
+            <button ng-click="control.confirmation.reject('Cancel')">Cancel</button>
         </div>
     </div>
 </div>

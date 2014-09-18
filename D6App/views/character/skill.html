@@ -5,7 +5,7 @@
         </span>
     </span>
     <span class="rank" ng-show="skill.rank>0 || skill.pips>0">{{skill.rank}}D<span class="pips" ng-show="skill.pips">+{{skill.pips}}</span></span>
-    <d6-adjust ng-show="controls.editing" d6-scope="skill.pips">
+    <d6-adjust ng-show="controls.editing" d6-scope="skill">
         <button class="i-arrow-down-right3 no-print" ng-show="controls.editing" title="Add Specialization"></button>
     </d6-adjust>
     

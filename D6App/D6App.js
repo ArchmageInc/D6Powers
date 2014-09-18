@@ -22,9 +22,11 @@
         }).when('/login',{
           templateUrl:  '/D6App/views/app/login.html' 
         }).when('/new',{
-          templateUrl:  '/D6App/views/app/new.html'
+          controller:   'NewCtlr',
+          templateUrl:  '/D6App/views/app/view.html'
         }).when('/view/:uid/:id',{
-          templateUrl:  '/D6App/views/app/character.html'
+          controller:   'ViewCtlr',
+          templateUrl:  '/D6App/views/app/view.html'
         }).otherwise({
           redirectTo: '/'
         });
