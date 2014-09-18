@@ -7,7 +7,7 @@
   ])
   .value(
     'FirebaseUrl',
-    'https://resplendent-inferno-5462.firebaseio.com/D6Powers'
+    'https://d6powers.firebaseio.com/'
   )
   .config([
     '$routeProvider',

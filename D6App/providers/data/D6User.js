@@ -45,10 +45,12 @@
           this.loginError     = error || null;
           this.authenticated  = false;
           this.authenticating = false;
-          this.save();
-          this.normalizer.clear();
-          this._setupSync();
-          $auth.$logout();
+          if($auth.user){
+            this.save();
+            this.normalizer.clear();
+            this._setupSync();
+            $auth.$logout();
+          }
         },
         "save": function(){
           if(this.$sync){
@@ -60,7 +62,7 @@
           this.authenticating = false;
           
           if(!$providerData || !$providerData.uid){
-            this.logout("Invalid");
+            this.logout("Invalid Data");
             return this;
           }
           
