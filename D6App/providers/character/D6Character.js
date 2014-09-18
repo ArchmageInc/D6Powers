@@ -164,19 +164,21 @@
           },
           "undo": function(){
             var $this = this;
-            $this.controls.undoing  = true;
-            $this.controls.revision--;
-            var clone  = $this.controls.revisions[$this.controls.revision-1];
-            $d6.extend($this,clone);
-            console.log("[UNDO] Revision Index: "+$this.controls.revision+" / "+$this.controls.revisions.length)
+            var clone = $this.controls.revisions[$this.controls.revision-2];
+            if(clone){
+              $this.controls.undoing  = true;
+              $this.controls.revision--;
+              $d6.extend($this,clone);
+            }
           },
           "redo": function(){
             var $this = this;
-            $this.controls.redoing  = true;
-            $this.controls.revision++;
-            var clone = $this.controls.revisions[$this.controls.revision-1];
-            $d6.extend($this,clone);
-            console.log("[REDO] Revision Index: "+$this.controls.revision+" / "+$this.controls.revisions.length)
+            var clone = $this.controls.revisions[$this.controls.revision];
+            if(clone){
+              $this.controls.redoing  = true;
+              $this.controls.revision++;
+              $d6.extend($this,clone);
+            }
           },
           "addRevision": function(){
             var $this = this;
@@ -185,14 +187,12 @@
               $this.controls.redoing  = false;
               return;
             }
-            $this.controls.changes  = true;
+            $this.controls.changes  = $this.controls.revision>0;
             if($this.controls.revision<$this.controls.revisions.length){
               $this.controls.revisions.splice($this.controls.revision,$this.controls.revisions.length);
             }
-            $this.controls.revision++;
             $this.controls.revisions.push($d6.clone($this));
-            console.log("[EDIT] Revision Index: "+$this.controls.revision+" / "+$this.controls.revisions.length)
-            console.log($this.controls.revisions)
+            $this.controls.revision = $this.controls.revisions.length;
           }
         });
         
