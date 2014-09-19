@@ -7,7 +7,16 @@
         return {
           restrict:     'E',
           templateUrl:  '/D6App/views/ui/toolbox.html',
-          controller:   'ToolboxCtlr'
+          controller:   'ToolboxCtlr',
+          link: function($scope,$el,attrs){
+            $scope.$watch('toolbox.open',function(newValue){
+              if(newValue){
+                $el.addClass('open');
+              }else{
+                $el.removeClass('open');
+              }
+            });
+          }
         };
       }
   ]);

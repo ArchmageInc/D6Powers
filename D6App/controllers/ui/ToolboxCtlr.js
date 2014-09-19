@@ -10,8 +10,7 @@
             function emptyToolbox(){
               $toolbox.empty();
             }
-            
-            $scope.tools  = $toolbox.tools;
+            $scope.toolbox  = $toolbox;
             
             $scope.$on('$locationChangeSuccess',emptyToolbox);
         }

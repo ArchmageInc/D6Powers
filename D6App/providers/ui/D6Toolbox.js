@@ -8,22 +8,31 @@
         'use strict';
         
         function D6Toolbox(){
-          this.tools  = [];
+          var $this = this;
+          this.tools  = [
+            new Tool({
+              icon:         'menu',
+              name:         'Menu',
+              show: function(){
+                return $this.tools.length>1;
+              }
+            })
+          ];
+          this.open = false;
         }
         $d6.addD6Properties(D6Toolbox.prototype,{
-          add:  function(tool,index){
+          add:  function(tool){
             if(ng.isArray(tool)){
               for(var i=0;i<tool.length;i++){
-                this.add(tool[i],index);
+                this.add(tool[i]);
               }
               return;
             }
-            index = index || 0;
             if(!(tool instanceof Tool)){
               return;
             }
             if(this.tools.indexOf(tool)===-1){
-              this.tools.splice(index,0,tool);
+              this.tools.push(tool);
             }
           },
           remove: function(tool){
@@ -39,7 +48,15 @@
             }
           },
           empty: function(){
-            this.tools.splice(0,this.tools.length);
+            this.tools.splice(1,this.tools.length);
+            this.open = false;
+          },
+          toggle: function(){
+            this.open = !this.open;
+          },
+          useTool: function(tool){
+            this.toggle();
+            tool.use();
           }
         });
         

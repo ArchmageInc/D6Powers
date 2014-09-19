@@ -9,7 +9,7 @@ html {
 }
 body {
   color: #3a3c36;
-  font-size: 12px;
+  font-size: 11px;
   margin: 0px;
   font-family: 'Exo 2', sans-serif;
   min-height: 100%;
@@ -29,11 +29,11 @@ h3,
 }
 h1,
 .h1 {
-  font-size: 3em;
+  font-size: 2em;
 }
 h2,
 .h2 {
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: #c9dfa0;
 }
 h3,
@@ -92,10 +92,13 @@ d6-header {
   padding: 0.25em 1em;
   border-bottom: 1em solid #f2f2f2;
   display: block;
+  width: 100%;
 }
 d6-header h1 {
   background: url('../img/d6.png') no-repeat left center;
-  padding-left: 48px;
+  background-size: contain;
+  padding-left: 32px;
+  white-space: nowrap;
 }
 d6-header a {
   font-size: 1.25em;
@@ -106,7 +109,7 @@ d6-header d6-toolbox {
   float: right;
 }
 d6-header nav {
-  display: inline-block;
+  display: block;
 }
 d6-header nav a:first-child:before {
   content: '|';
@@ -122,6 +125,31 @@ d6-header nav a:hover:before {
 }
 d6-header d6-auth-profile {
   float: right;
+}
+@media (max-width: 639px) {
+  d6-header d6-auth-profile {
+    margin-top: 3em;
+  }
+  d6-header nav {
+    margin-top: 3em;
+  }
+}
+@media (min-width: 480px) {
+  d6-header d6-toolbox button:first-child {
+    display: none;
+  }
+}
+@media (max-width: 479px) {
+  d6-header d6-toolbox {
+    position: absolute;
+    right: 0.75em;
+  }
+  d6-header d6-toolbox button:not(:first-child) {
+    display: none;
+  }
+  d6-header d6-toolbox.open button {
+    display: block;
+  }
 }
 d6-auth-profile {
   display: inline-block;
@@ -141,7 +169,7 @@ d6-auth-profile .loader {
 }
 d6-character-sheet {
   display: block;
-  width: 768px;
+  max-width: 768px;
   height: 100%;
   margin: 0 0.5em;
 }
@@ -158,9 +186,6 @@ d6-character-sheet .info {
   overflow: hidden;
   white-space: nowrap;
 }
-d6-character-sheet .info > div {
-  height: 1.5em;
-}
 d6-character-sheet .info > div > span {
   display: inline-block;
 }
@@ -173,17 +198,36 @@ d6-character-sheet .info > div > span:nth-child(even) {
   width: 100%;
   padding-bottom: 0.12em;
 }
-d6-character-sheet .info > div.multi-line > span {
-  width: auto;
-  margin: 0 0.25em 0 0;
+@media (min-width: 480px) {
+  d6-character-sheet .info > div.multi-line {
+    display: inline-block;
+  }
+  d6-character-sheet .info > div.multi-line > span {
+    width: auto;
+    margin: 0 0.25em 0 0;
+  }
+  d6-character-sheet .info > div.multi-line > span:nth-child(even) {
+    min-width: 9%;
+    padding-left: 0.5em;
+  }
 }
-d6-character-sheet .info > div.multi-line > span:nth-child(even) {
-  min-width: 9%;
-  padding-left: 0.5em;
+@media screen and (max-width: 767px) {
+  d6-character-sheet .info {
+    display: block;
+    width: 100%;
+  }
 }
-d6-character-sheet .stats {
-  display: inline-block;
-  width: 60%;
+@media print, screen and (min-width: 768px) {
+  d6-character-sheet .stats {
+    display: inline-block;
+    width: 60%;
+  }
+}
+@media screen and (max-width: 767px) {
+  d6-character-sheet .stats {
+    display: block;
+    width: 100%;
+  }
 }
 d6-character-sheet d6-adjust {
   display: inline-block;
@@ -205,6 +249,7 @@ d6-character-sheet d6-attribute {
   position: relative;
   padding: 0 0.25em;
   cursor: default;
+  white-space: nowrap;
 }
 d6-character-sheet d6-attribute .name {
   display: inline-block;
@@ -288,45 +333,47 @@ d6-dialog .dialog {
   padding: 1em;
   white-space: normal;
 }
-[data-description]:hover {
-  position: relative;
-}
-[data-description]:hover:after {
-  content: attr(data-description);
-  padding: 0.5em 1em;
-  position: absolute;
-  top: -100%;
-  border-radius: 0.5em;
-  border: 1px solid #f2f2f2;
-  background: #fd8507;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fd8507), to(#ef5132));
-  background: -webkit-linear-gradient(top, #fd8507, #ef5132);
-  background: -moz-linear-gradient(top, #fd8507, #ef5132);
-  background: -ms-linear-gradient(top, #fd8507, #ef5132);
-  background: -o-linear-gradient(top, #fd8507, #ef5132);
-  -webkit-box-shadow: #3a3c36 4px 6px 10px 2px;
-  -moz-box-shadow: #3a3c36 4px 6px 10px 2px;
-  box-shadow: #3a3c36 4px 6px 10px 2px;
-  white-space: normal;
-  color: #3a3c36;
-  font-size: 12px;
-  font-family: 'Exo 2', sans-serif;
-  font-weight: normal;
-  text-shadow: none;
-  width: intrinsic;
-  /* Safari/WebKit uses a non-standard name */
-  width: -moz-max-content;
-  /* Firefox/Gecko */
-  width: -webkit-max-content;
-  /* Chrome */
-  max-width: 400px;
-  z-index: 1000;
-}
-[data-description].d6-description-right:hover:after {
-  left: 100%;
-}
-[data-description].d6-description-left:hover:after {
-  right: 100%;
+@media screen and (min-width: 768px) {
+  [data-description]:hover {
+    position: relative;
+  }
+  [data-description]:hover:after {
+    content: attr(data-description);
+    padding: 0.5em 1em;
+    position: absolute;
+    top: -100%;
+    border-radius: 0.5em;
+    border: 1px solid #f2f2f2;
+    background: #fd8507;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fd8507), to(#ef5132));
+    background: -webkit-linear-gradient(top, #fd8507, #ef5132);
+    background: -moz-linear-gradient(top, #fd8507, #ef5132);
+    background: -ms-linear-gradient(top, #fd8507, #ef5132);
+    background: -o-linear-gradient(top, #fd8507, #ef5132);
+    -webkit-box-shadow: #3a3c36 4px 6px 10px 2px;
+    -moz-box-shadow: #3a3c36 4px 6px 10px 2px;
+    box-shadow: #3a3c36 4px 6px 10px 2px;
+    white-space: normal;
+    color: #3a3c36;
+    font-size: 12px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: normal;
+    text-shadow: none;
+    width: intrinsic;
+    /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content;
+    /* Firefox/Gecko */
+    width: -webkit-max-content;
+    /* Chrome */
+    max-width: 400px;
+    z-index: 1000;
+  }
+  [data-description].d6-description-right:hover:after {
+    left: 100%;
+  }
+  [data-description].d6-description-left:hover:after {
+    right: 100%;
+  }
 }
 .loader {
   background: url('../img/loading.gif') no-repeat center;
@@ -338,5 +385,6 @@ d6-dialog .dialog {
   text-align: center;
 }
 .login a {
-  margin: 0 0.12em;
+  display: inline-block;
+  margin: 0.12em 0.12em;
 }

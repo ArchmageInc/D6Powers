@@ -19,44 +19,45 @@ d6-dialog .dialog{
     padding: 1em;
     white-space: normal;
 }
+@media screen and (min-width: 768px){
+    [data-description]:hover{
+        position: relative;
+    }
+    [data-description]:hover:after{
+        content: attr(data-description);
+        padding: 0.5em 1em;
 
-[data-description]:hover{
-    position: relative;
-}
-[data-description]:hover:after{
-    content: attr(data-description);
-    padding: 0.5em 1em;
-    
-    position: absolute;
-    top: -100%;
-    
-    border-radius: 0.5em;
-    border: 1px solid @lt-grey;
-    
-    .gradient-background(@lt-orange,@dk-orange);
-    
-    .box-shadow(@dark,4px,6px,10px,2px);
-    
-    white-space: normal;
-    color: @dark;
-    font-size: 12px;
-    font-family: 'Exo 2', sans-serif;
-    font-weight: normal;
-    
-    text-shadow: none;
-    
-    width: intrinsic;           /* Safari/WebKit uses a non-standard name */
-    width: -moz-max-content;    /* Firefox/Gecko */
-    width: -webkit-max-content; /* Chrome */
-    max-width: 400px;
-    
-    z-index: 1000;
-}
-[data-description].d6-description-right:hover:after{
-    left: 100%;
-}
-[data-description].d6-description-left:hover:after{
-    right: 100%;
+        position: absolute;
+        top: -100%;
+
+        border-radius: 0.5em;
+        border: 1px solid @lt-grey;
+
+        .gradient-background(@lt-orange,@dk-orange);
+
+        .box-shadow(@dark,4px,6px,10px,2px);
+
+        white-space: normal;
+        color: @dark;
+        font-size: 12px;
+        font-family: 'Exo 2', sans-serif;
+        font-weight: normal;
+
+        text-shadow: none;
+
+        width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+        width: -moz-max-content;    /* Firefox/Gecko */
+        width: -webkit-max-content; /* Chrome */
+        max-width: 400px;
+
+        z-index: 1000;
+    }
+    [data-description].d6-description-right:hover:after{
+        left: 100%;
+    }
+    [data-description].d6-description-left:hover:after{
+        right: 100%;
+    }
 }
 
 .loader{

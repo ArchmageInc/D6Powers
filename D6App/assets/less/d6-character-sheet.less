@@ -1,6 +1,6 @@
 d6-character-sheet{
     display:    block;
-    width:      768px;
+    max-width:  768px;
     height:     100%;
     margin:     0 0.5em;
     .loader{
@@ -16,7 +16,6 @@ d6-character-sheet{
         overflow:       hidden;
         white-space:    nowrap;
         >div{
-            height: 1.5em;
             >span{
                 display: inline-block;
                 &:nth-child(odd){
@@ -30,20 +29,37 @@ d6-character-sheet{
                 }
             }
         }
-        >div.multi-line{
-             >span{
-                width:  auto;
-                margin: 0 0.25em 0 0;
-             }
-             >span:nth-child(even){
-                 min-width:     9%;
-                 padding-left:  0.5em;
-             }
+        @media (min-width: 480px){
+            >div.multi-line{
+                display: inline-block;
+                 >span{
+                    width:  auto;
+                    margin: 0 0.25em 0 0;
+                 }
+                 >span:nth-child(even){
+                     min-width:     9%;
+                     padding-left:  0.5em;
+                 }
+            }
         }
     }
-    .stats{
-        display:    inline-block;
-        width:      60%;
+    @media screen and (max-width: 767px){
+        .info{
+            display: block;
+            width: 100%;
+        }
+    }
+    @media print, screen and (min-width: 768px) {
+        .stats{
+            display:    inline-block;
+            width:      60%;
+        }
+    }
+    @media screen and (max-width: 767px){
+        .stats{
+            display: block;
+            width: 100%;
+        }
     }
     
     d6-adjust{
@@ -67,6 +83,7 @@ d6-character-sheet{
         position: relative;
         padding: 0 0.25em;
         cursor: default;
+        white-space: nowrap;
         .name{
             display: inline-block;
             text-align: left;

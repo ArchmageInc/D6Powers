@@ -11,9 +11,10 @@
             if(!$scope.description || !$scope.description.length){
               $el.removeAttr('data-description');
             }else{
-              var rightSpace  = $window.innerWidth-$el[0].offsetLeft;
-              var removeClass = "d6-description-"+(rightSpace<400 ? 'right' : 'left');
-              var addClass    = "d6-description-"+(rightSpace<400 ? 'left' : 'right');
+              var left   =  $el[0].offsetLeft;
+              var right  =  $window.innerWidth-$el[0].offsetLeft;
+              var removeClass = "d6-description-"+(right<400 ? 'right' : 'left');
+              var addClass    = "d6-description-"+(right<400 ? 'left' : 'right');
               
               $el.removeClass(removeClass);
               $el.addClass(addClass);

@@ -2,9 +2,12 @@ d6-header{
     padding: 0.25em 1em;
     border-bottom: 1em solid @lt-grey;
     display: block;
+    width: 100%;
     h1{
         background: url('../img/d6.png') no-repeat left center;
-        padding-left: 48px;
+        background-size: contain;
+        padding-left: 32px;
+        white-space: nowrap;
     }
     a{
         font-size: 1.25em;
@@ -15,7 +18,7 @@ d6-header{
         float: right;
     }
     nav{
-        display: inline-block;
+        display: block;
         a:first-child:before{
             content: '|';
             margin: 0 0.5em;
@@ -30,5 +33,30 @@ d6-header{
     }
     d6-auth-profile{
         float: right;
+    }
+    @media (max-width: 639px){
+        d6-auth-profile{
+            margin-top: 3em;
+        }
+        nav{
+            margin-top: 3em;
+        }
+    }
+    @media (min-width: 480px){
+        d6-toolbox button:first-child{
+            display: none;
+        }
+    }
+    @media (max-width: 479px){
+        d6-toolbox{
+            position: absolute;
+            right: 0.75em;
+        }
+        d6-toolbox button:not(:first-child){
+            display: none;
+        }
+        d6-toolbox.open button{
+            display: block;
+        }
     }
 }
