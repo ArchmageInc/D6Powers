@@ -1,0 +1,12 @@
+<h2>
+    <span class="name">
+        <span d6-description="attribute.description">
+            {{ attribute.name }}
+        </span>
+    </span>
+    <span class="rank">{{ attribute.rank }}D<span class="pips" ng-show="attribute.pips">+{{ attribute.pips }}</span></span>
+    <d6-adjust ng-show="controls.editing" d6-scope="attribute"></d6-adjust>
+</h2>
+<div class="skills">
+    <d6-skill d6-scope="skill" d6-controls="controls"  ng-repeat="skill in attribute.skills | orderOB:'name':false track by skill.name"></d6-skill>
+</div>
