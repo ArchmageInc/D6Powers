@@ -1,3 +1,53 @@
+button{
+   display: inline-block;
+   cursor: pointer;
+   border: 0;
+   border-top: 1px solid @dk-orange;
+   background: @lt-orange;
+   .gradient-background(@lt-orange,@dk-orange);
+   .box-shadow(@dark,0,1px,0);
+   padding: 5px 10px;
+   border-radius: 8px;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 1em;
+   outline: none;
+   text-decoration: none;
+   vertical-align: middle; 
+}
+button:hover{
+   border-top-color: @tertiary;
+}
+button:active{
+    border-top-color: @dark;
+}
+button[disabled]{
+   border-top: 1px solid @dark;
+   background: greyscale(@lt-orange);
+   .gradient-background(greyscale(@lt-orange),greyscale(@dk-orange));
+   cursor: default;
+}
+input{
+    color: @dk-orange;
+    border: none;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+    background: none;
+    letter-spacing: inherit;
+    word-wrap: inherit;
+    word-spacing: inherit;
+    text-transform: inherit;
+    text-indent: inherit;
+    text-shadow: inherit;
+    text-align: inherit;
+    outline: none;
+    outline-offset: 0;
+    margin-right: -0.6em;
+}
+input[disabled]{
+    color: @dark;
+}
 .modal{
     opacity: 0.8;
     position: fixed;
