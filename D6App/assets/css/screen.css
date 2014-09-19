@@ -9,7 +9,7 @@ html {
 }
 body {
   color: #3a3c36;
-  font-size: 11px;
+  font-size: 12px;
   margin: 0px;
   font-family: 'Exo 2', sans-serif;
   min-height: 100%;
@@ -89,10 +89,11 @@ button[disabled] {
   cursor: default;
 }
 d6-header {
-  padding: 0.25em 1em;
+  padding: 0.25em 0.25em;
   border-bottom: 1em solid #f2f2f2;
   display: block;
   width: 100%;
+  overflow: hidden;
 }
 d6-header h1 {
   background: url('../img/d6.png') no-repeat left center;
@@ -182,7 +183,7 @@ d6-character-sheet .loader {
 d6-character-sheet .info {
   display: inline-block;
   width: 60%;
-  margin-left: 0.25em;
+  padding-left: 0.25em;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -232,13 +233,11 @@ d6-character-sheet .info > div > span:nth-child(even) {
 d6-character-sheet d6-adjust {
   display: inline-block;
   position: absolute;
-  top: 0.5em;
   right: 34%;
   font-size: 9px;
 }
 d6-character-sheet d6-adjust button {
   padding: 0.25em;
-  display: block;
   margin: 0.25em 0px;
   border-radius: 0.5em;
 }
