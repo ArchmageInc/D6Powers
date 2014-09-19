@@ -93,6 +93,10 @@ d6-header {
   border-bottom: 1em solid #f2f2f2;
   display: block;
 }
+d6-header h1 {
+  background: url('../img/d6.png') no-repeat left center;
+  padding-left: 48px;
+}
 d6-header a {
   font-size: 1.25em;
 }
@@ -200,6 +204,7 @@ d6-character-sheet d6-attribute {
   width: 50%;
   position: relative;
   padding: 0 0.25em;
+  cursor: default;
 }
 d6-character-sheet d6-attribute .name {
   display: inline-block;
