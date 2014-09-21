@@ -15,22 +15,22 @@
             {{character.player.displayName}}
         </span>
     </div>
-    <div ng-show="character.occupation">
+    <div ng-show="character.occupation || character.controls.editing">
         <span>Occupation:</span>
         <span class="occupation">
             <input size="{{character.occupation.length}}" type="text" ng-model="character.occupation" ng-disabled="!character.controls.editing" />
         </span>
     </div>
-    <div ng-show="character.archetype">
+    <div ng-show="character.archetype || character.controls.editing">
         <span>Archetype:</span>
-        <span class="archetype">
-            <input size="{{character.archetype.length}}" type="text" ng-model="character.archetype" ng-disabled="!character.controls.editing" />
-        </span>
+        <d6-select d6-model="character.archetype" d6-options="archetypes" d6-enabled="character.controls.editing"></d6-select>
+        
     </div>
     <div>
         <span>Species / Gender:</span>
         <span class="species">
-            <input size="{{character.species.length}}" type="text" ng-model="character.species" ng-disabled="!character.controls.editing" /> / <input size="{{character.gender.length}}" type="text" ng-model="character.gender" ng-disabled="!character.controls.editing" />
+            <input size="{{character.species.length}}" type="text" ng-model="character.species" ng-disabled="!character.controls.editing" /> /
+            <d6-select d6-model="character.gender" d6-options="genders" d6-enabled="character.controls.editing"></d6-select>
         </span>
     </div>
 </div>

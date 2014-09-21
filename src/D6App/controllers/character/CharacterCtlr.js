@@ -4,7 +4,8 @@
     ng.module('D6App').controller('CharacterCtlr',[
         '$scope',
         'D6Utils',
-        function CharacterController($scope,$d6){
+        'D6ArchetypeList',
+        function CharacterController($scope,$d6,archetypes){
             'use strict';
            
             var watchers  = [];
@@ -39,6 +40,18 @@
             watchers.push($scope.$watch(onDigest));
             
             $scope.$on('$destroy',unwatchCharacter);
+            
+            $scope.archetypes = archetypes;
+            $scope.genders  = {
+              "Male": {
+                "name": "Male",
+                "description":  "The one with the boy parts."
+              },
+              "Female":{
+                "name": "Female",
+                "description": "The one with the girl parts."
+              }
+            };
         }
     ]);
 })(angular);

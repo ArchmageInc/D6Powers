@@ -6,6 +6,9 @@ d6-character-sheet{
     h1 input,h1 input[disabled]{
         color: inherit;
     }
+    input:not([disabled]),select:not([disabled]){
+        background-color: @lt-grey;
+    }
     .loader{
         display:    inline-block;
         float:      right;
@@ -22,7 +25,7 @@ d6-character-sheet{
         display:        table;
         div{
             display: table-row;
-            >span{
+            >*{
                 display: table-cell;
                 &:nth-child(odd){
                     font-weight:    bold;
@@ -30,14 +33,22 @@ d6-character-sheet{
                 }
                 &:nth-child(even){
                     border-bottom:  1px solid @dark;
-                    padding-bottom: 0.12em;
-                    padding-left: 0.25em;
+                    padding: 0.25em 0.5em;
                     width: 100%;
                 }
             }
         }
-        input:not([disabled]){
+        input:not([disabled]),select:not([disabled]){
             font-weight: bold;
+        }
+        input,select{
+            padding: 0.25em 0 0.2em 0.5em;
+            margin-left: -0.5em;
+            margin-bottom: -0.5em;
+            margin-top: -0.25em;
+        }
+        select{
+            padding-left: 0;
         }
     }
     @media (min-width: 480px){

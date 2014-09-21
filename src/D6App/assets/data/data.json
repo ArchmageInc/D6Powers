@@ -9742,5 +9742,91 @@
   "Certified Social Workers In Health Care",
   "Logistician",
   "Estate Planning Counselor"
-]
+],
+"archetypes":{
+  "The Adventurer": {
+    "name": "The Adventurer",
+    "description": "The Adventurer is an everyday kind of guy who happens to have special abilities and the will to use them. An Adventurer’s goals are not lofty or dark; if you are an Adventurer, you just know right from wrong and feel a responsibility to use your abilities for the common good. Adventurers are known for flexibility and thoughtfulness. This is one of the most open and heroic of the Archetypes, and suitable for a character that’s certain he wants to be heroic, but not sure how to be.",
+    "bonus": "Concept Bonus: The character receives any 2D to add to ANY skill or 2 ranks of any Advantage of her choice at no extra charge. This bonus may not exceed the starting skill die code limit. Your character regains 2 Ka when she sets an example by doing what’s right, especially when others might hesitate."
+    ,"type": "Hero"
+  },
+  "The Bravo": {
+    "name": "The Bravo",
+    "description": "Bravo has not a care in the world, and lives for the moment. She’s the life of the party, the Ayatollah of Rock-n-Rolla, constantly joking, and taking everything not with a single grain of salt, but a whole bag of salt. She’s a high-octane joy girl (or boy) who always takes the big chances and somehow gains the big rewards, a thrill seeker who lives life to the fullest. But she must also beware the consequences of her actions!",
+    "bonus": "Concept Bonus: The character receives either 2 ranks of the Good Looks Advantage or 2D in the charm or dodge skill. The Bravo regains 2 Ka when she overcomes her enemies with reckless abandon!"
+    ,"type": "Hero"
+  },
+  "The Comedian": {
+    "name": "The Comedian",
+    "description": "The comedian is the crime fighter who fights not only with a sharp wit, but also with a contagious mirth. Always joking, he’s the bright side of every tragedy. With this Archetype, a character could also be the tragic clown, laughing on the outside but crying on the inside, and possibly very unhappy in their personal life.",
+    "bonus": "Concept Bonus: The character receives either the Trademark Specialization (R1)& Skill Bonus (R1) or 2D in any Presence skill. The character regains 2 Ka when he defeats a villain with mirth and wit."
+    ,"type": "Hero"
+  },
+  "The Dark Avenger": {
+    "name": "The Dark Avenger",
+    "description": "The Dark Avenger is the character that fights the forces of evil with his rules, driven by some need to see justice being done, possibly on any terms. The character is consumed by the desire to wreak retribution on all villains, generally for some slight or tragedy that was committed against them in their past. To the Dark Avenger’s view, the streets are full of crime and the local law enforcement is either on the take or completely ineffectual. In order to take back the streets, the Dark Avenger and every right- thinking citizen should get their hands dirty, making the predators the prey. However, they may destroy a lot in the process of your vengeance, and certainly aren’t likely to make more friends – in fact, they may drive some away.",
+    "bonus": "Concept Bonus: The character receives either the Hard to Kill Advantage (R2), or 2D in the intimidation or sneak skills. The Dark Avenger regains 2 Ka when she brings the guilty to justice."
+    ,"type": "Hero"
+  },
+  "The Icon": {
+    "name": "The Icon",
+    "description": "The Icon is the essence of the loftier ideals of humanity. People look up to her for what she represents. She’s the person who tries to lead by example, putting her best foot forward in the hopes that it will inspire humanity to do the same. Sometimes the people around her think she’s corny and stuffy, but it’s a small price to pay to achieve her goals!",
+    "bonus": "Concept Bonus: The character receives either 2D in the command skill, or the Fame Advantage. The hero regains 2 Ka when she lives up to her ideals and triumph over the forces of evil."
+    ,"type": "Hero"
+  },
+  "The Outsider": {
+    "name": "The Outsider",
+    "description": "The Outsider is different from normal society or people... or so he thinks, anyway. Whether hunted for real, or by some imaginary foes, the world is a much colder place to live than normal society, because The Outsider realizes what’s really going on. He’s the ultimate survivor, living by his own cunning and sharp wits. His friends probably consider him a pessimist, if they’re not like- minded.",
+    "bonus": "Concept Bonus: The character receives either 2D in the sneak or hide skill or the Contacts (R2) Advantage. She regains 2 Ka when she thwarts her opponents with her cunning."
+    ,"type": "Hero"
+  },
+  "The Protector": {
+    "name": "The Protector",
+    "description": "The Protector is the champion of an idea or place. She might be the defender of the environment on an island, or a small community anywhere, or might be devoted to ideas like “justice,” “purity,” etc. She fights with almost a religious fervor when protecting her charges, and takes her duties very seriously. She feels personal pain if by her own inaction, she allows harm to come to that which she protects.",
+    "bonus": "Concept Bonus: The character receives either 2D in the stamina skill or the Hard to Kill (R2) Advantage. She regains 2 Ka when she protects her charge(s)."
+    ,"type": "Hero"
+  },
+  "The Rogue": {
+    "name": "The Rouge",
+    "description": "No one has more secrets than the Rogue does. The Rogue runs the borderline of a criminal, barely heroic character, and may have a shady past that he’s trying to run away from or forget. The straight and narrow path is one littered with temptation, and he must stay strong and not falter... because sometimes the unsavory deeds of the past come back to haunt you. More often than not, he’ll falter on that path, looking for an angle that leads to personal gain. He’s not above using his status as a hero to benefit himself. He has an absolute disdain for authority, and will always want to do things his way. Yet with all these personal drawbacks, he still has a sense of honor, and will stick with a friend to the end.",
+    "bonus": "Concept Bonus: The character receives either 2D in the sneak, sleight of hand, security, or hide skills. The character regains 2 Ka when he uses his skills to help atone for past deeds."
+    ,"type": "Hero"
+  },
+  "The Scientist": {
+    "name": "The Scientist",
+    "description": "The Scientist seeks knowledge for the sake of knowing. She could be any type of educated figure, from a mathematician to an exotic sorcerer. She is brilliant, and oft a little quirky, always looking for the cutting edge – and she won’t stop looking until she’s cut herself on it, too! This is not to say that every Scientist is a goofy, wild-haired guy in the basement of the science building – she could also be that ultra-sexy astrophysicist rock star who gets all the guys because she has all the brains. However, most Scientists share the common trait that they must know the unknowable – and that can get them into a lot of trouble!",
+    "bonus": "Concept Bonus: The character receives 2D in either the scholar, tech or gadgetry skill, or a Laboratory (R2). The character regains 2 Ka whenever she uses science (or knowledge) to solve a problem, or make a great discovery."
+    ,"type": "Hero"
+  },
+  "The Warrior": {
+    "name": "The Warrior",
+    "description": "Your character lives for the fight and little else. He lives the Spartan life, always honing his abilities. He may have a social life, but this is probably by pure accident. The Warrior is always completely obsessed with the fight – his goal is to be the best, and the only way to be the best is through battle.",
+    "bonus": "Concept Bonus: The character receives 2D in either brawl or melee skills or any Physique skill. He regains 2 Ka when he defeats a worthy and equally matched (or better) opponent in single combat."
+    ,"type": "Hero"
+  },
+  "The Megalomaniac": {
+    "name": "The Megalomaniac",
+    "description": "The Megalomaniac is a mad egotistical psychopath, wanting nothing more than to do things on a large scale – with him at the center. Megalomaniacs may be insane leaders bent on world domination, or just people with delusions of grandeur. Small-time crooks want to rob a bank, but the Megalomaniac wants to rob all the banks in the city at the very stroke of noon!!!",
+    "bonus": "Concept Bonus: The Megalomaniac receives 2D in the Command skill or Support Staff (R2) Advantage. The Megalomaniac regains 4 points of Ka when she carefully lays out and executes a grandiose plan."
+    ,"type": "Villan"
+  },
+  "The Nihilist": {
+    "name": "The Nihilist",
+    "description": "The Nihilist rejects all moral, ethical, and social principles, living only to hurt, annihilate, and devastate property and people. In most cases the Nihilist cares nothing for his own well-being and sees his eventual demise as a fate he cannot avoid. Nihilists are generally crazed and bloodthirsty monsters, serial killers, and robots programmed only to wipe out the designated enemy. They can be very cold and calculating, however.",
+    "bonus": "Concept Bonus: The Nihilist receives 2D in the Brawl skill or the Hard to Kill (R2) Advantage. The Nihilist regains 4 points of Ka when she destroys her designated target with reckless abandon."
+    ,"type": "Villan"
+  },
+  "The Crony": {
+    "name": "The Crony",
+    "description": "The Crony is the henchmen, the rent-a-goon, the minion, or thug. The crony’s sole purpose is to help facilitate the plans of his employer or master. You usually see lots of cronies with a Megalomaniac. This is a special Archetype reserved for the right- hand man, not the rank-and-file soldiers belonging to the main villain’s organization.",
+    "bonus": "Concept Bonus: Cronies receives 2D in either Brawl or Melee Combat skills. The Crony regains 4 points of Ka when she carries out her master’s wishes."
+    ,"type": "Villan"
+  },
+  "The Anarchist": {
+    "name": "The Anarchist",
+    "description": "This archetype is not necessarily evil in the strictest sense, but many villains use a belief or theory focused around anarchy to explain selfish and miscreant behavior. The Anarchist believes (or at least claims) that all law is bad and individual freedom and needs should be absolute. If an Anarchist wants something, he takes it – and if a law impedes his progress, he breaks it. The Anarchist’s code of conduct is dictated by his needs at the moment, and those needs can be very dangerous.",
+    "bonus": "Concept Bonus: The Anarchist receives 2D to spend on any Skill or Advantage that she wants. The Anarchist regains 4 points of Ka when she states a need and does not let anyone or anything stand in her way when trying to achieve that goal."
+    ,"type": "Villan"
+  }
+}
 }

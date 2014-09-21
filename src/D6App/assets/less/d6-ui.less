@@ -13,7 +13,8 @@ button{
    font-size: 1em;
    outline: none;
    text-decoration: none;
-   vertical-align: middle; 
+   vertical-align: middle;
+   margin: 0.25em;
 }
 button:hover{
    border-top-color: @tertiary;
@@ -27,7 +28,7 @@ button[disabled]{
    .gradient-background(greyscale(@lt-orange),greyscale(@dk-orange));
    cursor: default;
 }
-input{
+input,select{
     color: @dk-orange;
     border: none;
     font: inherit;
@@ -35,6 +36,7 @@ input{
     margin: 0;
     background: none;
     letter-spacing: inherit;
+    white-space: inherit;
     word-wrap: inherit;
     word-spacing: inherit;
     text-transform: inherit;
@@ -43,10 +45,41 @@ input{
     text-align: inherit;
     outline: none;
     outline-offset: 0;
-    margin-right: -0.6em;
+    margin-right: -0.4em;
 }
-input[disabled]{
+input[disabled],select[disabled]{
     color: @dark;
+}
+.custom-select.disabled::after,d6-select.disabled::after{
+    content: "";
+    height: 1.37em;
+    width: 1.5em;
+    position: relative;
+    left: -1em;
+    background: #FFF;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: -0.5em;
+    margin-bottom: -0.5em;
+    top: -0.12em;
+    vertical-align: middle;
+}
+.custom-select::after,d6-select::after{
+    content: "\25BC";
+    height: 1.37em;
+    width: 1.5em;
+    position: relative;
+    left: -1em;
+    background: #FFF;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: -0.5em;
+    margin-bottom: -0.5em;
+    top: -0.12em;
+    vertical-align: middle;
+    color: @dk-orange;
 }
 .modal{
     opacity: 0.8;

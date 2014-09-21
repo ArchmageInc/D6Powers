@@ -8,7 +8,8 @@
       'D6NameGenerator',
       'D6Sock',
       'D6AttributeList',
-      function ($q,$auth,$d6,$nameGenerator,Sock,AttributeList){
+      'D6ArchetypeList',
+      function ($q,$auth,$d6,$nameGenerator,Sock,AttributeList,Archetypes){
         'use strict';
         
         function clearChanges(character){
@@ -56,6 +57,9 @@
               "attributes": AttributeList.getAttributes().then(function(attributes){
                 character.attributes  = new AttributeList(attributes);
                 return character.attributes;
+              }),
+              "archetype": Archetypes.getRandom().then(function(archetype){
+                return character.archetype = archetype.name;
               })
             };            
           }
@@ -70,7 +74,7 @@
             name:             "",
             alias:            "",
             occupation:       "",
-            archetype:        "Adventurer",
+            archetype:        "",
             species:          "Human",
             gender:           "",
             powerLevel:       2,
