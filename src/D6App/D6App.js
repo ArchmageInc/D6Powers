@@ -17,7 +17,7 @@
       
       $routeProvider
         .when('/',{
-          controller:   'HomeCtlr',
+          controller:   'ListCtlr',
           templateUrl:  '/views/app/home.html'
         }).when('/login',{
           templateUrl:  '/views/app/login.html' 
@@ -27,6 +27,9 @@
         }).when('/view/:uid/:id',{
           controller:   'ViewCtlr',
           templateUrl:  '/views/app/view.html'
+        }).when('/view/:uid',{
+          controller:   'ListCtlr',
+          templateUrl:  '/views/app/home.html'
         }).otherwise({
           redirectTo: '/'
         });
