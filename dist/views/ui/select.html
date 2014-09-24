@@ -1,6 +1,0 @@
-<select ng-model="model" ng-disabled="!enabled">
-    <optgroup ng-if="groups.length" ng-repeat="optgroup in options | unique:'type'" label="{{optgroup.type}}">
-        <option ng-repeat="option in options | filterOB:{'type':optgroup.type}" ng-value="option.name" title="{{option.description}}" ng-selected="option.name===model">{{option.name}}</option>
-    </optgroup>
-    <option ng-if="!groups.length" ng-repeat="option in options" ng-value="option.name" title="{{option.description}}" ng-selected="option.name===model">{{option.name}}</option>
-</select>

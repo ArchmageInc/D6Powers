@@ -1,22 +1,39 @@
 /*global module:false*/
 module.exports = function(grunt) {
   grunt.initConfig({
+    bower: {
+      install: {
+        "options":{
+          "targetDir":  "build/js/lib"
+        }
+      }
+    },
     copy:{
+      assets:{
+        files: [
+          {
+            expand: true,
+            cwd: "assets",
+            src: ["**/*",".htaccess"],
+            dest: "build/"
+          }
+        ]
+      },
       views: {
         files: [
           {
             expand: true,
             cwd: "D6App/views",
             src: ["*/*.html"],
-            dest: "../dist/views/",
+            dest: 'build/views/'
           }
         ]
       }
     },
     wiredep: {
-      target: {
+      lib: {
         src: [
-          "../index.html"
+          "build/index.html"
         ],
         options:{
           dependencies: true,
@@ -36,7 +53,7 @@ module.exports = function(grunt) {
           paths:  ["D6App/assets/less"]
         },
         files: {
-          "../dist/css/screen.css": "D6App/assets/less/screen.less"
+          "build/css/screen.css": "D6App/assets/less/screen.less"
         }
         
       }
@@ -44,81 +61,82 @@ module.exports = function(grunt) {
     uglify: {
       modules:{
         options:{
-          mangle: false,
+          mangle: false
         },
         files: [{
             expand: true,
             flatten: true,
             cwd:  'D6App/modules',
             src:  '**/*.js',
-            dest: 'assets/scripts/modules'
+            dest: 'build/scripts/modules'
         }]
       },
       app:  {
         options:{
-          mangle: false,
+          mangle: false
         },
         files:{
-          'assets/scripts/D6App.min.js': 'D6App/D6App.js'
+          'build/scripts/D6App.min.js': 'D6App/D6App.js'
         }
       },
       providers:{
         options:{
-          mangle: false,
+          mangle: false
         },
         files: [{
             expand: true,
             flatten: true,
             cwd:  'D6App/providers',
             src:  '**/*.js',
-            dest: 'assets/scripts/providers'
+            dest: 'build/scripts/providers'
         }]
       },
       directives:{
         options:{
-          mangle: false,
+          mangle: false
         },
         files: [{
             expand: true,
             flatten: true,
             cwd:  'D6App/directives',
             src:  '**/*.js',
-            dest: 'assets/scripts/directives'
+            dest: 'build/scripts/directives'
         }]
       },
       filters:{
         options:{
-          mangle: false,
+          mangle: false
         },
         files: [{
             expand: true,
             flatten: true,
             cwd:  'D6App/filters',
             src:  '**/*.js',
-            dest: 'assets/scripts/filters'
+            dest: 'build/scripts/filters'
         }]
       },
       controllers:{
         options:{
-          mangle: false,
+          mangle: false
         },
         files: [{
             expand: true,
             flatten: true,
             cwd:  'D6App/controllers',
             src:  '**/*.js',
-            dest: 'assets/scripts/controllers'
+            dest: 'build/scripts/controllers'
         }]
       }
     },
     concat: {
       target: {
-        src: ['assets/scripts/modules/*.js','assets/scripts/*.js','assets/scripts/providers/*.js','assets/scripts/directives/*.js','assets/scripts/filters/*.js','assets/scripts/controllers/*.js'],
-        dest: '../dist/js/d6.min.js'
+        src: ['build/scripts/modules/*.js','build/scripts/*.js','build/scripts/providers/*.js','build/scripts/directives/*.js','build/scripts/filters/*.js','build/scripts/controllers/*.js'],
+        dest: 'build/js/d6.min.js'
       }
     },
     clean:{
-      js:["assets/scripts"]
+      start:["build"],
+      end: ["build/scripts"]
     },
     watch:{
       html:{
@@ -152,9 +170,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
-
-  grunt.registerTask('js', ['wiredep','uglify','concat','clean']);
+  grunt.loadNpmTasks('grunt-bower-task');
+  
+  grunt.registerTask('js', ['bower','wiredep','uglify','concat','clean:end']);
   grunt.registerTask('css', ['less']);
   grunt.registerTask('html',['copy']);
-  grunt.registerTask('default', ['html','js','css','watch']);
+  
+  grunt.registerTask('build',['clean:start','html','js','css']);
+  
+  grunt.registerTask('default', ['build','watch']);
 };

@@ -16,7 +16,5 @@
     "angular-route": "~1.2.23",
     "angular": "~1.2.24"
   },
-  "devDependencies": {
-    "underscore": "~1.7.0"
-  }
+  "devDependencies": {}
 }
