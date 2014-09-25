@@ -1,5 +1,5 @@
 BOX = "ubuntu-14.04-amd64-vbox"
-URL = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/#{$BOX}.box"
+URL = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box"
 
 Vagrant.configure(2) do |config|
 

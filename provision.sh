@@ -28,7 +28,7 @@ if [ ! -e /usr/local/bin/grunt ]; then
 fi
 
 echo -e "\e[0m\e[1;97;44m --== Installing Server-Side Dependencies ==-- \e[0m"
-cd /vagrant/src && npm install --quiet
+cd /vagrant/src && sudo npm install --quiet
 
 echo -e "\e[0m\e[1;97;44m --== Building Project ==-- \e[0m"
 cd /vagrant/src && grunt build
