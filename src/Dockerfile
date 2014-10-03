@@ -1,10 +1,10 @@
 # DOCKER-VERSION 0.3.4
 FROM nginx
 
-COPY ./nginx.conf /etc/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-#RUN nginx -s reload
+WORKDIR /etc/nginx
 
 EXPOSE 80
 
-CMD nginx
+CMD ["nginx"]

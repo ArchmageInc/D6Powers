@@ -10,6 +10,12 @@ Vagrant.configure(2) do |config|
   
   config.vm.synced_folder "./", "/vagrant"
 
-  config.vm.provision "shell", path: "provision.sh", privileged: false
+  config.vm.provision "shell", path: "scripts/run", args: "/vagrant/scripts/provision.sh", privileged: false
+  
+  config.trigger.after :up do
+    run "vagrant ssh -c \"/vagrant/scripts/run /vagrant/scripts/post-up.sh\""
+  end
+
+  config.vm.post_up_message = "The application should now be available via http://192.168.10.10"
 
 end

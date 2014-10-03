@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export IMGNAME="d6-client"
+export TIMEZONE="America/Indiana/Indianapolis"
+
+$1
